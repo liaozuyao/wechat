@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czyl.dao.QuestionMapper">
+  <resultMap id="BaseResultMap" type="com.czyl.entity.Question">
+    <id column="f_id" jdbcType="BIGINT" property="id" />
+    <result column="f_title" jdbcType="VARCHAR" property="title" />
+    <result column="f_fieldid" jdbcType="BIGINT" property="fieldId" />
+    <result column="f_nodeid" jdbcType="BIGINT" property="nodeId" />
+    <result column="f_phone" jdbcType="CHAR" property="phone" />
+    <result column="f_eventid" jdbcType="INTEGER" property="eventId" />
+    <result column="f_influence" jdbcType="INTEGER" property="influence" />
+    <result column="f_urgent" jdbcType="INTEGER" property="urgent" />
+    <result column="f_original" jdbcType="VARCHAR" property="original" />
+    <result column="f_originalmobile" jdbcType="CHAR" property="originalMobile" />
+    <result column="f_originalphone" jdbcType="CHAR" property="originalPhone" />
+    <result column="f_originalmail" jdbcType="VARCHAR" property="originalMail" />
+    <result column="f_file" jdbcType="VARCHAR" property="file" />
+    <result column="f_describe" jdbcType="VARCHAR" property="describe" />
+    <result column="f_status" jdbcType="INTEGER" property="status"/>
+    <result column="f_createtime" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="f_userid" jdbcType="BIGINT" property="userId"/>
+  </resultMap>
+
+  <insert id="insertQuestion" parameterType="com.czyl.entity.Question">
+    INSERT INTO t_question(f_title, f_fieldid, f_nodeid, f_phone, f_eventid, f_influence, f_urgent, f_original,
+    f_originalmobile, f_originalphone, f_originalmail, f_file, f_describe, f_createtime, f_userid)
+    VALUES (#{title,jdbcType=VARCHAR},#{fieldId,jdbcType=BIGINT},#{nodeId,jdbcType=BIGINT},#{phone,jdbcType=CHAR},
+    #{eventId,jdbcType=INTEGER},#{influence,jdbcType=INTEGER},#{urgent,jdbcType=INTEGER},#{original,jdbcType=VARCHAR},
+    #{originalMobile,jdbcType=CHAR},#{originalPhone,jdbcType=CHAR},#{originalMail,jdbcType=VARCHAR},#{file,jdbcType=VARCHAR},
+    #{describe,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{userId,jdbcType=BIGINT});
+  </insert>
+  <select id="getAllQuestions" resultMap="BaseResultMap">
+    select * from t_question
+  </select>
+  <select id="countQuestion" resultType="java.lang.Integer">
+    SELECT count(f_id) FROM t_question
+  </select>
+  <select id="getQuestionByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+      SELECT f_id, f_title, f_fieldid, f_nodeid, f_phone, f_eventid, f_influence, f_urgent, f_original,
+    f_originalmobile, f_originalphone, f_originalmail, f_file, f_describe, f_status, f_createtime, f_userid
+    FROM t_question WHERE f_userid = #{userId,jdbcType=BIGINT};
+  </select>
+
+  <select id="getQuestionDetails" parameterType="java.lang.Long" resultMap="BaseResultMap">
+     SELECT f_id, f_title, f_fieldid, f_nodeid, f_phone, f_eventid, f_influence, f_urgent, f_original,
+    f_originalmobile, f_originalphone, f_originalmail, f_file, f_describe, f_status, f_createtime, f_userid
+    FROM t_question WHERE f_id = #{id,jdbcType=BIGINT};
+  </select>
+
+  <select id="getQuestionByField" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from t_question where f_fieldid = #{fieldId,jdbcType=BIGINT};
+  </select>
+
+  <select id="getQuestionByNodeId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT * FROM t_question WHERE f_nodeid = #{nodeId,jdbcType=BIGINT};
+  </select>
+
+  <select id="getQuestionByStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * from t_question WHERE f_status = #{status,jdbcType=INTEGER};
+  </select>
+  
+  <select id="getQuestionVague" resultMap="BaseResultMap">
+    SELECT * FROM  t_question WHERE f_id LIKE '%${vague}%' AND f_userid=#{userId,jdbcType=BIGINT};
+  </select>
+</mapper>

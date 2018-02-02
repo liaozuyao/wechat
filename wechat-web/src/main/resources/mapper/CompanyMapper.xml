@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czyl.dao.CompanyMapper">
+    <resultMap id="BaseResultMap" type="com.czyl.entity.Company">
+        <id column="f_id" jdbcType="BIGINT" property="id"/>
+        <result column="f_comname" jdbcType="VARCHAR" property="comName"/>
+        <result column="f_createtime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="f_isdelete" jdbcType="INTEGER" property="isDelete"/>
+    </resultMap>
+    <insert id="insertCompany" parameterType="com.czyl.entity.Company">
+        INSERT INTO t_company(f_comname,f_createtime) VALUES (#{comName,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP});
+    </insert>
+    <select id="getAllCompany" resultMap="BaseResultMap">
+        SELECT * FROM t_company
+    </select>
+    <select id="getAllNotDel" resultMap="BaseResultMap">
+        SELECT * FROM t_company WHERE f_isdelete != 1
+    </select>
+    <select id="countCompany" resultType="java.lang.Integer">
+        SELECT count(f_id) FROM t_company
+    </select>
+    <update id="changeCompanyStatus">
+        UPDATE t_company SET f_isdelete =#{isDel,jdbcType=INTEGER} WHERE f_id=#{id,jdbcType=BIGINT}
+    </update>
+    <update id="changeCompanyName">
+        UPDATE t_company SET f_comname = #{companyName,jdbcType=VARCHAR WHERE f_id=#{id,jdbcType=BIGINT}
+    </update>
+</mapper>

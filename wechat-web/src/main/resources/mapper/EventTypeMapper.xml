@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czyl.dao.EventTypeMapper">
+    <resultMap id="BaseResultMap" type="com.czyl.entity.EventType">
+        <id column="f_id" jdbcType="BIGINT" property="id" />
+        <result column="f_name" jdbcType="CHAR" property="name" />
+    </resultMap>
+    <select id="seletAll" resultMap="BaseResultMap">
+        SELECT f_id,f_name FROM t_eventtype;
+    </select>
+
+    <select id="getName" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT f_id,f_name FROM t_eventtype WHERE f_id=#{id,jdbcType=BIGINT};
+    </select>
+</mapper>
