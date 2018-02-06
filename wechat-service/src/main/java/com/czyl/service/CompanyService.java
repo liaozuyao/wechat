@@ -1,5 +1,6 @@
 package com.czyl.service;
 
+import com.czyl.dto.CompanyDto;
 import com.czyl.entity.Company;
 
 import java.util.List;
@@ -9,15 +10,11 @@ import java.util.List;
  */
 public interface CompanyService {
 
-    Integer insertCompany(String name);
+    Integer insertCompany(Company company);
 
-    List<Company> getAllCompany();
+    Integer updateCompany(Company company);
 
-    Integer countCompany();
+    List<Company> selectCompany();
 
-    Integer deleteCompany(Long id, Integer status);
-
-    List<Company> getAllNotDel();
-
-    Integer changeCompanyName(String companyName, Long id);
+    List<Company> selectCompanyById(Long id);
 }

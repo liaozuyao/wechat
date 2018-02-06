@@ -5,31 +5,40 @@ import java.util.Date;
 /**
  * Created by liaozuyao on 2018/1/3.
  */
-public class Company extends BaseEntity {
+public class Company{
 
-    private String comName;
+    private Long id;
+    private String name;
+    private String code;
+    private String contactName;
+    private String contactPhone;
+    private String contactMail;
+    private String password;
     private Date createTime;
-    private String strTime;
-    private Integer isDelete;
+    private Integer superAdmin;
 
-    public Integer getIsDelete() {
-        return isDelete;
+    public Long getId() {
+        return id;
     }
 
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
+    public Integer getSuperAdmin() {
+        return superAdmin;
     }
 
-    public String getStrTime() {
-        return strTime;
+    public void setSuperAdmin(Integer superAdmin) {
+        this.superAdmin = superAdmin;
     }
 
-    public void setStrTime(String strTime) {
-        this.strTime = strTime;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getComName() {
-        return comName;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Date getCreateTime() {
@@ -40,7 +49,43 @@ public class Company extends BaseEntity {
         this.createTime = createTime;
     }
 
-    public void setComName(String comName) {
-        this.comName = comName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
+    public String getContactMail() {
+        return contactMail;
+    }
+
+    public void setContactMail(String contactMail) {
+        this.contactMail = contactMail;
     }
 }

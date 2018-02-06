@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${questionList}" var="items">
-                    <tr id="${items.id}" class="questionList" onclick="getDetails(this.id)">
+                    <tr id="${items.id}" class="questionList">
                         <td>
                                 ${items.id}
                         </td>
@@ -118,5 +118,19 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(".questionList").click(function () {
+        var id = $(this).attr("id");
+        $.get("<%=basePath%>getQuestionDetail", {
+            id : id
+        }, function (data) {
+            if(data.code == 200){
+                window.location.href = "<%=basePath%>questionDetailByAdmin";
+            } else {
+
+            }
+        })
+    })
+</script>
 </body>
 </html>

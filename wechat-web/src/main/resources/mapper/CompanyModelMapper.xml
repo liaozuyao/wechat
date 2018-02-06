@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czyl.dao.CompanyModelMapper">
+    <resultMap id="BaseResultMap" type="com.czyl.entity.CompanyModel">
+        <id column="cm_comid" jdbcType="BIGINT" property="companyId"/>
+        <result column="cm_serviceid" jdbcType="BIGINT" property="serviceId"/>
+        <result column="cm_enclosure" jdbcType="VARCHAR" property="enclosure"/>
+    </resultMap>
+    <!--<resultMap id="companysModels" type="com.czyl.entity.Company">-->
+        <!--<id column="ci_id" jdbcType="BIGINT" property="id"/>-->
+        <!--<result column="ci_name" jdbcType="VARCHAR" property="name"/>-->
+        <!--<result column="ci_code" jdbcType="VARCHAR" property="code"/>-->
+        <!--<result column="ci_contactname" jdbcType="VARCHAR" property="contactName"/>-->
+        <!--<result column="ci_contactphone" jdbcType="CHAR" property="contactPhone"/>-->
+        <!--<result column="ci_contactmail" jdbcType="VARCHAR" property="contactMail"/>-->
+        <!--<result column="ci_createtime" jdbcType="TIMESTAMP" property="createTime"/>-->
+        <!--<collection property="companyModels" ofType="com.czyl.entity.CompanyModel">-->
+            <!---->
+        <!--</collection>-->
+    <!--</resultMap>-->
+    <select id="selectByCompanyId" resultMap="BaseResultMap">
+        SELECT * FROM t_comany_model WHERE cm_comid = #{companyId};
+    </select>
+    <!--<select id="selectEnclosureAndServiceName" resultMap="">-->
+        <!--SELECT tc.cm_comid companyid,ts.sm_name servicename,tc.cm_enclosure enclosure FROM-->
+        <!--t_comany_model tc INNER JOIN t_service_model ts WHERE tc.cm_serviceid = ts.sm_id AND cm_comid = #{companyId}-->
+    <!--</select>-->
+</mapper>

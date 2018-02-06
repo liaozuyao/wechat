@@ -10,23 +10,7 @@ public class Question{
 
     private Long fieldId;
 
-    private Long nodeId;
-
-    private String phone;
-
-    private Integer eventId;
-
-    private Integer influence;
-
     private Integer urgent;
-
-    private String original;
-
-    private String originalMobile;
-
-    private String originalPhone;
-
-    private String originalMail;
 
     private String file;
 
@@ -36,49 +20,19 @@ public class Question{
 
     private Date createTime;
 
-    private String strTime;
+    private Date hopeTime;
 
-    private Long userId;
+    private Long companyId;
 
-//    public Question(String title, Long fieldId, Long nodeId, String phone, Integer eventId, Integer influence,
-//                    Integer urgent, String original, String originalMobile, String originalPhone,
-//                    String originalMail, String file, String describe, Long userId) {
-//        this.title = title;
-//        this.fieldId = fieldId;
-//        this.nodeId = nodeId;
-//        this.phone = phone;
-//        this.eventId = eventId;
-//        this.influence = influence;
-//        this.urgent = urgent;
-//        this.original = original;
-//        this.originalMobile = originalMobile;
-//        this.originalPhone = originalPhone;
-//        this.originalMail = originalMail;
-//        this.file = file;
-//        this.describe = describe;
-//        this.userId = userId;
-//    }
-//
-//    public Question(Long id, String title, Long fieldId, Long nodeId, String phone, Integer eventId, Integer influence,
-//                    Integer urgent, String original, String originalMobile, String originalPhone,
-//                    String originalMail, String file, String describe, Integer status, Long userId) {
-//        this.id = id;
-//        this.title = title;
-//        this.fieldId = fieldId;
-//        this.nodeId = nodeId;
-//        this.phone = phone;
-//        this.eventId = eventId;
-//        this.influence = influence;
-//        this.urgent = urgent;
-//        this.original = original;
-//        this.originalMobile = originalMobile;
-//        this.originalPhone = originalPhone;
-//        this.originalMail = originalMail;
-//        this.file = file;
-//        this.describe = describe;
-//        this.status = status;
-//        this.userId = userId;
-//    }
+    private Long adviserId;
+
+    public Long getAdviserId() {
+        return adviserId;
+    }
+
+    public void setAdviserId(Long adviserId) {
+        this.adviserId = adviserId;
+    }
 
     public Long getId() {
         return id;
@@ -120,78 +74,6 @@ public class Question{
         this.fieldId = fieldId;
     }
 
-    public Long getNodeId() {
-        return nodeId;
-    }
-
-    public void setNodeId(Long nodeId) {
-        this.nodeId = nodeId;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Integer getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(Integer eventId) {
-        this.eventId = eventId;
-    }
-
-    public Integer getInfluence() {
-        return influence;
-    }
-
-    public void setInfluence(Integer influence) {
-        this.influence = influence;
-    }
-
-    public Integer getUrgent() {
-        return urgent;
-    }
-
-    public void setUrgent(Integer urgent) {
-        this.urgent = urgent;
-    }
-
-    public String getOriginal() {
-        return original;
-    }
-
-    public void setOriginal(String original) {
-        this.original = original;
-    }
-
-    public String getOriginalMobile() {
-        return originalMobile;
-    }
-
-    public void setOriginalMobile(String originalMobile) {
-        this.originalMobile = originalMobile;
-    }
-
-    public String getOriginalPhone() {
-        return originalPhone;
-    }
-
-    public void setOriginalPhone(String originalPhone) {
-        this.originalPhone = originalPhone;
-    }
-
-    public String getOriginalMail() {
-        return originalMail;
-    }
-
-    public void setOriginalMail(String originalMail) {
-        this.originalMail = originalMail;
-    }
-
     public String getFile() {
         return file;
     }
@@ -208,19 +90,27 @@ public class Question{
         this.describe = describe;
     }
 
-    public String getStrTime() {
-        return strTime;
+    public Long getCompanyId() {
+        return companyId;
     }
 
-    public void setStrTime(String strTime) {
-        this.strTime = strTime;
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Integer getUrgent() {
+        return urgent;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUrgent(Integer urgent) {
+        this.urgent = urgent;
+    }
+
+    public Date getHopeTime() {
+        return hopeTime;
+    }
+
+    public void setHopeTime(Date hopeTime) {
+        this.hopeTime = hopeTime;
     }
 }

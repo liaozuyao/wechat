@@ -3,10 +3,8 @@ package com.czyl.controller;
 import com.czyl.common.Constants;
 import com.czyl.common.StatusConstants;
 import com.czyl.entity.Admin;
-import com.czyl.entity.ChangeList;
 import com.czyl.entity.Question;
 import com.czyl.service.AdminService;
-import com.czyl.service.ChangeListService;
 import com.czyl.service.QuestionService;
 import com.czyl.utils.ViewData;
 import com.github.pagehelper.PageHelper;
@@ -28,12 +26,6 @@ public class MainController extends BaseController{
 
     @Resource
     AdminService adminService;
-
-    @Resource
-    QuestionService questionService;
-
-    @Resource
-    ChangeListService changeListService;
 
     @RequestMapping("/index.html")
     public String mainPage(){
@@ -73,55 +65,31 @@ public class MainController extends BaseController{
         return "error";
     }
 
-    @RequestMapping("/allChangeListByAdmin")
-    public String allChangeListByAdmin(@RequestParam(value = "pn", defaultValue = "1") Integer pn,
-                                       Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        Admin admin = (Admin) request.getSession().getAttribute("admin");
-        if(admin != null){
-            PageHelper.startPage(pn, Constants.PAGESIZE);
-            List<ChangeList> allChangeList = changeListService.getAllChangeList();
-            PageInfo page = new PageInfo(allChangeList, Constants.PAGESIZE);
-            model.addAttribute("allChangeList", allChangeList);
-            model.addAttribute("pageInfo", page);
-            Integer count = changeListService.countChangeList();
-            Integer pageNum = 0;
-            if(count % Constants.PAGESIZE == 0){
-                pageNum = count / Constants.PAGESIZE;
-            } else {
-                pageNum = count / Constants.PAGESIZE + 1;
-            }
-            model.addAttribute("pageNum", pageNum);
-            request.setAttribute("pageNum", pageNum);
-            return "admin/allChangeList";
-        }
-        request.getRequestDispatcher("admin.html").forward(request, response);
-        return null;
-    }
 
-    @RequestMapping("/allQuestionByAdmin")
-    public String allQuestionByAdmin(@RequestParam(value = "pn", defaultValue = "1") Integer pn,
-                                     Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        Admin admin = (Admin) request.getSession().getAttribute("admin");
-        if(admin != null){
-            PageHelper.startPage(pn, Constants.PAGESIZE);
-            List<Question> allQuestions = questionService.getAllQuestions();
-            PageInfo page = new PageInfo(allQuestions, Constants.PAGESIZE );
-            model.addAttribute("questionList", allQuestions);
-            model.addAttribute("pageInfo", page);
-            Integer count = questionService.countQuestion();
-            Integer pageNum = 0;
-            if(count % Constants.PAGESIZE == 0){
-                pageNum = count / Constants.PAGESIZE;
-            } else {
-                pageNum = count / Constants.PAGESIZE + 1;
-            }
-            model.addAttribute("pageNum", pageNum);
-            request.setAttribute("pageNum", pageNum);
-            return "admin/allQuestion";
-        } else {
-//            response.sendRedirect("/WeChat/admin.html");
-            request.getRequestDispatcher("admin.html").forward(request, response);
-            return null;
-        }
-    }
+//    @RequestMapping("/allQuestionByAdmin")
+//    public String allQuestionByAdmin(@RequestParam(value = "pn", defaultValue = "1") Integer pn,
+//                                     Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+//        Admin admin = (Admin) request.getSession().getAttribute("admin");
+//        if(admin != null){
+//            PageHelper.startPage(pn, Constants.PAGESIZE);
+//            List<Question> allQuestions = questionService.getAllQuestions();
+//            PageInfo page = new PageInfo(allQuestions, Constants.PAGESIZE );
+//            model.addAttribute("questionList", allQuestions);
+//            model.addAttribute("pageInfo", page);
+//            Integer count = questionService.countQuestion();
+//            Integer pageNum = 0;
+//            if(count % Constants.PAGESIZE == 0){
+//                pageNum = count / Constants.PAGESIZE;
+//            } else {
+//                pageNum = count / Constants.PAGESIZE + 1;
+//            }
+//            model.addAttribute("pageNum", pageNum);
+//            request.setAttribute("pageNum", pageNum);
+//            return "admin/allQuestion";
+//        } else {
+////            response.sendRedirect("/WeChat/admin.html");
+//            request.getRequestDispatcher("admin.html").forward(request, response);
+//            return null;
+//        }
+//    }
 }

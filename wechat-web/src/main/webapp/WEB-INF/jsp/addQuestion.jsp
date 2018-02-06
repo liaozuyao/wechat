@@ -42,51 +42,12 @@
             </select>
         </div>
         <div class="form-group">
-            <select class="form-control" id="nodes">
-                <option value="0">-请选择问题节点(必填)-</option>
-                <c:forEach var="items" items="${nodes}">
-                    <option value="${items.id}">${items.name}</option>
-                </c:forEach>
-            </select>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" maxlength="11" id="phone" placeholder="请输入提交人的手机"/>
-        </div>
-        <div class="form-group">
-            <select class="form-control" id="eventType">
-                <option value="0">-请选择事件类型-</option>
-                <c:forEach var="items" items="${eventType}">
-                    <option value="${items.id}">${items.name}</option>
-                </c:forEach>
-            </select>
-        </div>
-        <div class="form-group">
-            <select class="form-control" id="influence">
-                <option value="0">-请选择影响范围-</option>
-                <c:forEach var="items" items="${influence}">
-                    <option value="${items.id}">${items.name}</option>
-                </c:forEach>
-            </select>
-        </div>
-        <div class="form-group">
             <select class="form-control" id="urgent">
                 <option value="0">-请选择紧急度-</option>
                 <c:forEach var="items" items="${urgent}">
                     <option value="${items.id}">${items.name}</option>
                 </c:forEach>
             </select>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="original" placeholder="请选择原始提交人"/>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" maxlength="11" id="originalMobile" placeholder="请输入原始提交人的手机"/>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="originalPhone" placeholder="请输入原始提交人的电话"/>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="originalMail" placeholder="请输入原始提交人的邮箱"/>
         </div>
         <div class="form-group">
             <form id="postForm" enctype="multipart/form-data" method="post">
@@ -146,22 +107,22 @@
         })
     }
 
-    function getNodes(value) {
-        var dom = document.getElementById("nodes");
-        $.ajax({
-            url: "<%=basePath%>selected",
-            data: "parentId=" + value,
-            type: "GET",
-            success: function (result) {
-                var info = "";
-                for (var i = 0; i < result.data.length; i++) {
-                    info += "<option value=" + result.data[i].id + ">" + result.data[i].name + "</option>"
-                }
-                dom.innerHTML = null;
-                dom.innerHTML = info;
-            }
-        });
-    }
+    <%--function getNodes(value) {--%>
+        <%--var dom = document.getElementById("nodes");--%>
+        <%--$.ajax({--%>
+            <%--url: "<%=basePath%>selected",--%>
+            <%--data: "parentId=" + value,--%>
+            <%--type: "GET",--%>
+            <%--success: function (result) {--%>
+                <%--var info = "";--%>
+                <%--for (var i = 0; i < result.data.length; i++) {--%>
+                    <%--info += "<option value=" + result.data[i].id + ">" + result.data[i].name + "</option>"--%>
+                <%--}--%>
+                <%--dom.innerHTML = null;--%>
+                <%--dom.innerHTML = info;--%>
+            <%--}--%>
+        <%--});--%>
+    <%--}--%>
 
     function getCommit() {
         var a = new Array();
@@ -173,29 +134,13 @@
         file = file.substring(0, file.length - 1);
         var title = $("#title").val();
         var field = $("#fields").val();
-        var node = $("#nodes").val();
-        var phone = $("#phone").val();
-        var eventType = $("#eventType").val();
-        var influence = $("#influence").val();
         var urgent = $("#urgent").val();
-        var original = $("#original").val();
-        var originalMobile = $("#originalMobile").val();
-        var originalPhone = $("#originalPhone").val();
-        var originalMail = $("#originalMail").val();
         var files = file;
         var describe = $("#describe").val();
         $.post("<%=basePath%>insertQuestion", {
             'title': title,
             'fieldId': field,
-            'nodeId': node,
-            'phone': phone,
-            'eventId': eventType,
-            'influence': influence,
             'urgent': urgent,
-            'original': original,
-            'originalMobile': originalMobile,
-            'originalPhone': originalPhone,
-            'originalMail': originalMail,
             'file': files,
             'describe': describe
         }, function (data) {
