@@ -23,10 +23,10 @@ public class CompanyController extends BaseController{
     private CompanyService companyService;
 
     @Resource
-    CompanyModelBeanService companyModelBeanService;
+    private CompanyModelBeanService companyModelBeanService;
 
     @Resource
-    CompanyModelService companyModelService;
+    private CompanyModelService companyModelService;
 
     @RequestMapping(value = "/insertCompany", method = RequestMethod.POST)
     @ResponseBody

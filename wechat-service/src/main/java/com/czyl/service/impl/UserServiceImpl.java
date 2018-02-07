@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 public class UserServiceImpl implements UserService{
 
     @Resource
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     public Integer insertUser(User user) {
         return userMapper.insertUser(user);

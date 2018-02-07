@@ -12,7 +12,7 @@ import java.util.List;
 public class SolveQuestionServiceImpl implements SolveQuestionService{
 
     @Resource
-    SolveQuestionMapper solveQuestionMapper;
+    private SolveQuestionMapper solveQuestionMapper;
 
     public List<SolveQuestion> getAllQuestions() {
         return solveQuestionMapper.getAllQuestions();

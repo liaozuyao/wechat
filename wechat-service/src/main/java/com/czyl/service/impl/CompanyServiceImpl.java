@@ -29,9 +29,6 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     public List<Company> selectCompany() {
-//        for (CompanyDto c:companyMapper.selectCompany()) {
-//            System.out.println(c.toString());
-//        }
         return companyMapper.selectCompany();
     }
 

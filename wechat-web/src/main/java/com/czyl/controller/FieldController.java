@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 public class FieldController extends BaseController{
 
     @Resource
-    FieldService fieldService;
+    private FieldService fieldService;
 
     @RequestMapping("/getAllField")
     @ResponseBody

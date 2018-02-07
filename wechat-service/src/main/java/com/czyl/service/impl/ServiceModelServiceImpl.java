@@ -12,7 +12,7 @@ import java.util.List;
 public class ServiceModelServiceImpl implements ServiceModelService{
 
     @Resource
-    ServiceModelMapper serviceModelMapper;
+    private ServiceModelMapper serviceModelMapper;
 
     public Integer insert(String name) {
         return serviceModelMapper.insert(name);

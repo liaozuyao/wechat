@@ -12,7 +12,7 @@ import java.util.List;
 public class CompanyInfoServiceImpl implements CompanyInfoService{
 
     @Resource
-    CompanyInfoMapper companyInfoMapper;
+    private CompanyInfoMapper companyInfoMapper;
 
     public List<CompanyInfo> select(Long id) {
         return companyInfoMapper.select(id);

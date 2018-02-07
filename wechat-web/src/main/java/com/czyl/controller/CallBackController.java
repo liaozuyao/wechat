@@ -23,7 +23,7 @@ import java.net.URLEncoder;
 public class CallBackController extends BaseController {
 
     @Resource
-    UserService userService;
+    private UserService userService;
 
     @RequestMapping(value = "/wxLogin", method = RequestMethod.GET)
     public void wxLogin(HttpServletResponse response) throws IOException{

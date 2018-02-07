@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 public class ServiceModelController extends BaseController{
 
     @Resource
-    ServiceModelService serviceModelService;
+    private ServiceModelService serviceModelService;
 
     @RequestMapping(value = "/insertServiceName",method = RequestMethod.POST)
     @ResponseBody

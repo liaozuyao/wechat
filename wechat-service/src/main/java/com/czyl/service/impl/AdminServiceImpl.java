@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 public class AdminServiceImpl implements AdminService{
 
     @Resource
-    AdminMapper adminMapper;
+    private AdminMapper adminMapper;
 
     public Admin select(String name, String password) {
         return adminMapper.select(name, password);

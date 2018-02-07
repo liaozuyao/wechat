@@ -1,16 +1,10 @@
 package com.czyl.controller;
 
-import com.czyl.common.Constants;
 import com.czyl.common.StatusConstants;
 import com.czyl.entity.Admin;
-import com.czyl.entity.Question;
 import com.czyl.service.AdminService;
-import com.czyl.service.QuestionService;
 import com.czyl.utils.ViewData;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,14 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 @Controller
 public class MainController extends BaseController{
 
     @Resource
-    AdminService adminService;
+    private AdminService adminService;
 
     @RequestMapping("/index.html")
     public String mainPage(){

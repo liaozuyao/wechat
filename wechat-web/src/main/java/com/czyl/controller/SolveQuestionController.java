@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 public class SolveQuestionController extends BaseController{
 
     @Resource
-    SolveQuestionService solveQuestionService;
+    private SolveQuestionService solveQuestionService;
 
     @RequestMapping(value = "/getAll")
     @ResponseBody

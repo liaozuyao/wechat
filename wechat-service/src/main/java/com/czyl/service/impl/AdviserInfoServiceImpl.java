@@ -12,7 +12,7 @@ import java.util.List;
 public class AdviserInfoServiceImpl implements AdviserInfoService{
 
     @Resource
-    AdviserInfoMapper adviserInfoMapper;
+    private AdviserInfoMapper adviserInfoMapper;
 
     public Integer insertAdviserInfo(AdviserInfo adviserInfo) {
         return adviserInfoMapper.insertAdviserInfo(adviserInfo);

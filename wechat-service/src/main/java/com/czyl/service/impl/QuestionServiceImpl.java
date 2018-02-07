@@ -12,7 +12,7 @@ import java.util.List;
 public class QuestionServiceImpl implements QuestionService{
 
     @Resource
-    QuestionMapper questionMapper;
+    private QuestionMapper questionMapper;
 
     public Integer insertQuestion(Question question) {
         return questionMapper.insertQuestion(question);

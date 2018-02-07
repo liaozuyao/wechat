@@ -8,8 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>wechat-web</artifactId>
     <packaging>war</packaging>
-    <name>wechat-web Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <name>wechat-web</name>
     <dependencies>
         <dependency>
             <groupId>com.czyl</groupId>

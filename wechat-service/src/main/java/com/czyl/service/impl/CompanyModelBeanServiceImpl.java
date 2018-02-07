@@ -12,7 +12,7 @@ import java.util.List;
 public class CompanyModelBeanServiceImpl implements CompanyModelBeanService{
 
     @Resource
-    CompanyModelBeanMapper companyModelBeanMapper;
+    private CompanyModelBeanMapper companyModelBeanMapper;
 
     public List<CompanyModelBean> selectByCompanyId(Long id) {
         return companyModelBeanMapper.selectByCompanyId(id);

@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 public class QuestionController extends BaseController {
 
     @Resource
-    QuestionService questionService;
+    private QuestionService questionService;
 
     @RequestMapping(value = "/insertQuestion", method = RequestMethod.POST)
     @ResponseBody

@@ -12,7 +12,7 @@ import java.util.List;
 public class FieldServiceImpl implements FieldService {
 
     @Resource
-    FieldMapper fieldMapper;
+    private FieldMapper fieldMapper;
 
     public Integer insertField(Field field) {
         return fieldMapper.insertField(field);

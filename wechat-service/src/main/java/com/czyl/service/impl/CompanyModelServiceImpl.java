@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 public class CompanyModelServiceImpl implements CompanyModelService{
 
     @Resource
-    CompanyModelMapper companyModelMapper;
+    private CompanyModelMapper companyModelMapper;
 
     public Integer insertCompanyModel(Long companyId, Long modelId, String enslosure) {
         return companyModelMapper.insertCompanyModel(companyId, modelId, enslosure);
