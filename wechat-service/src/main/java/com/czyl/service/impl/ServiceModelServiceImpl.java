@@ -14,11 +14,19 @@ public class ServiceModelServiceImpl implements ServiceModelService{
     @Resource
     ServiceModelMapper serviceModelMapper;
 
-    public Integer insert(ServiceModel serviceModel) {
-        return serviceModelMapper.insert(serviceModel);
+    public Integer insert(String name) {
+        return serviceModelMapper.insert(name);
     }
 
     public List<ServiceModel> selectServiceName() {
         return serviceModelMapper.selectServiceName();
+    }
+
+    public Integer updateServiceName(String name, Long id) {
+        return serviceModelMapper.updateServiceName(name, id);
+    }
+
+    public Integer deleteServiceName(Integer isDelete, Long id) {
+        return serviceModelMapper.deleteServiceName(isDelete, id);
     }
 }

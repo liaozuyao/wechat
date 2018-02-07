@@ -4,8 +4,18 @@
     <resultMap id="BaseResultMap" type="com.czyl.entity.ServiceModel">
         <id column="sm_id" jdbcType="BIGINT" property="id"/>
         <result column="sm_name" jdbcType="VARCHAR" property="name"/>
+        <result column="sm_isdelete" jdbcType="INTEGER" property="isDelete"/>
     </resultMap>
     <select id="selectServiceName" resultMap="BaseResultMap">
         SELECT * FROM t_service_model;
     </select>
+    <insert id="insert" parameterType="java.lang.String">
+        INSERT INTO t_service_model(sm_name) VALUES (#{name});
+    </insert>
+    <update id="updateServiceName">
+        UPDATE t_service_model SET sm_name = #{name} WHERE sm_id = #{id};
+    </update>
+    <update id="deleteServiceName">
+        UPDATE t_service_model SET sm_isdelete = #{isDelete} WHERE sm_id = #{id};
+    </update>
 </mapper>

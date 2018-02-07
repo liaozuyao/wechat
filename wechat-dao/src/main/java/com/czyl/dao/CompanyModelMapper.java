@@ -1,14 +1,8 @@
 package com.czyl.dao;
 
-import com.czyl.entity.CompanyModel;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface CompanyModelMapper {
 
-    Integer insertCompanyModel(CompanyModel companyModel);
-
-    List<CompanyModel> selectAll();
-
-    List<CompanyModel> selectByCompanyId(Long companyId);
+    Integer insertCompanyModel(@Param("companyId") Long companyId, @Param("serviceId") Long modelId, @Param("enclosure") String enclosure);
 }

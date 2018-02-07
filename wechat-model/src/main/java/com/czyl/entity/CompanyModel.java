@@ -9,14 +9,6 @@ public class CompanyModel{
     private Long serviceId;
     private String enclosure;
 
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
-
     public Long getServiceId() {
         return serviceId;
     }
@@ -31,5 +23,14 @@ public class CompanyModel{
 
     public void setEnclosure(String enclosure) {
         this.enclosure = enclosure;
+    }
+
+    public Long getCompanyId() {
+
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }

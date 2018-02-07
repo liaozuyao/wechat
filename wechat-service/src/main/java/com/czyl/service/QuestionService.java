@@ -11,4 +11,9 @@ public interface QuestionService {
 
     Integer insertQuestion(Question question);
 
+    Integer updateQuestionStatus(Integer status, Integer changeUser, Long id, Long companyId);
+
+    List<Question> getQuestionByCompanyId(Long companyId);
+
+    List<Question> getQuestionByStatus(Integer status);
 }

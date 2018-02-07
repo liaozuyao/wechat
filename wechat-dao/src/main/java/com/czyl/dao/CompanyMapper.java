@@ -1,6 +1,5 @@
 package com.czyl.dao;
 
-import com.czyl.dto.CompanyDto;
 import com.czyl.entity.Company;
 
 import java.util.List;

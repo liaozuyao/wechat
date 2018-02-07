@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czyl.dao.AdviserInfoMapper">
+    <resultMap id="baseMap" type="com.czyl.entity.AdviserInfo">
+        <id column="ai_id" jdbcType="BIGINT" property="id"/>
+        <result column="ai_name" jdbcType="VARCHAR" property="name"/>
+        <result column="ai_phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="ai_mail" jdbcType="VARCHAR" property="mail"/>
+    </resultMap>
+    <select id="getAllAdviser" resultMap="baseMap">
+        SELECT * FROM t_adviser_info;
+    </select>
+    <insert id="insertAdviserInfo" parameterType="com.czyl.entity.AdviserInfo">
+        INSERT INTO t_adviser_info(ai_name, ai_phone, ai_mail) VALUES (#{name},#{phone},#{mail});
+    </insert>
+</mapper>

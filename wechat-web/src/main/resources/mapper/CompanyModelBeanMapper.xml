@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czyl.dao.CompanyModelBeanMapper">
+    <resultMap id="baseMap" type="com.czyl.entity.CompanyModelBean">
+        <result column="cm_comid" jdbcType="BIGINT" property="companyId"/>
+        <result column="cm_serviceid" jdbcType="BIGINT" property="serviceId"/>
+        <result column="cm_enclosure" jdbcType="VARCHAR" property="enclosure"/>
+        <association property="companyName" column="ci_id" select="selectCompany"></association>
+        <association property="modelName" column="sm_id" select="selectServiceModel"></association>
+    </resultMap>
+    <resultMap id="companyInfoMap" type="com.czyl.entity.Company">
+        <id column="ci_id" jdbcType="BIGINT" property="id"/>
+        <result column="ci_name" jdbcType="VARCHAR" property="name"/>
+        <result column="ci_code" jdbcType="VARCHAR" property="code"/>
+        <result column="ci_contactname" jdbcType="VARCHAR" property="contactName"/>
+        <result column="ci_contactphone" jdbcType="CHAR" property="contactPhone"/>
+        <result column="ci_contactmail" jdbcType="VARCHAR" property="contactMail"/>
+        <result column="ci_password" jdbcType="VARCHAR" property="password"/>
+        <result column="ci_createtime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="ci_superadmin" jdbcType="INTEGER" property="superAdmin"/>
+    </resultMap>
+    <resultMap id="serviceModelMap" type="com.czyl.entity.ServiceModel">
+        <id column="sm_id" jdbcType="BIGINT" property="id"/>
+        <result column="sm_name" jdbcType="VARCHAR" property="name"/>
+        <result column="sm_isdelete" jdbcType="INTEGER" property="isDelete"/>
+    </resultMap>
+    <select id="selectCompany" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT ci_name FROM t_company_info WHERE ci_id = #{companyId};
+    </select>
+    <select id="selectServiceModel" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT sm_name FROM t_service_model WHERE sm_id = #{serviceId};
+    </select>
+    <select id="selectByCompanyId" resultMap="baseMap">
+        SELECT cm.*,ci.*,sm.* FROM t_company_model cm, t_company_info ci, t_service_model sm WHERE cm.cm_comid = ci.ci_id AND cm.cm_serviceid = sm.sm_id AND cm.cm_comid = #{companyId};
+    </select>
+    <select id="selectAllCompany" resultMap="baseMap">
+        SELECT cm.*,ci.*,sm.* FROM t_company_model cm, t_company_info ci, t_service_model sm WHERE cm.cm_comid = ci.ci_id AND cm.cm_serviceid = sm.sm_id;
+    </select>
+</mapper>

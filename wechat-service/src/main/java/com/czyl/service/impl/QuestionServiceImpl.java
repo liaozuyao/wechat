@@ -6,6 +6,7 @@ import com.czyl.service.QuestionService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class QuestionServiceImpl implements QuestionService{
@@ -15,5 +16,17 @@ public class QuestionServiceImpl implements QuestionService{
 
     public Integer insertQuestion(Question question) {
         return questionMapper.insertQuestion(question);
+    }
+
+    public Integer updateQuestionStatus(Integer status, Integer changeUser, Long id, Long companyId) {
+        return questionMapper.updateQuestionStatus(status, changeUser, id, companyId);
+    }
+
+    public List<Question> getQuestionByCompanyId(Long companyId) {
+        return questionMapper.getQuestionByCompanyId(companyId);
+    }
+
+    public List<Question> getQuestionByStatus(Integer status) {
+        return questionMapper.getQuestionByStatus(status);
     }
 }

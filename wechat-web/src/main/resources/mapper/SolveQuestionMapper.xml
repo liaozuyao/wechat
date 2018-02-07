@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czyl.dao.SolveQuestionMapper">
+    <resultMap id="baseMap" type="com.czyl.entity.SolveQuestion">
+        <result column="sq_adviser_id" jdbcType="BIGINT" property="adviserId"/>
+        <result column="sq_question_id" jdbcType="BIGINT" property="questionId"/>
+        <result column="sq_use_time" jdbcType="VARCHAR" property="useTime"/>
+        <result column="sq_describe" jdbcType="VARCHAR" property="describe"/>
+        <result column="sq_enclosure" jdbcType="VARCHAR" property="enclosure"/>
+        <association property="adviserInfo" select="getAdviser" column="ai_id"></association>
+        <association property="question" select="getQuestion" column="id"></association>
+    </resultMap>
+    <resultMap id="adviserMap" type="com.czyl.entity.AdviserInfo">
+        <id column="ai_id" jdbcType="BIGINT" property="id"/>
+        <result column="ai_name" jdbcType="VARCHAR" property="name"/>
+        <result column="ai_phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="ai_mail" jdbcType="VARCHAR" property="mail"/>
+    </resultMap>
+    <resultMap id="questionMap" type="com.czyl.entity.Question">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="fieldid" jdbcType="BIGINT" property="fieldId" />
+        <result column="urgent" jdbcType="INTEGER" property="urgent" />
+        <result column="files" jdbcType="VARCHAR" property="file" />
+        <result column="describes" jdbcType="VARCHAR" property="describe" />
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="hopetime" jdbcType="TIMESTAMP" property="hopeTime"/>
+        <result column="companyid" jdbcType="BIGINT" property="companyId"/>
+        <result column="adviser" jdbcType="BIGINT" property="adviserId"/>
+        <result column="changeuser" jdbcType="INTEGER" property="changeUser"/>
+    </resultMap>
+    <select id="getAdviser" resultMap="adviserMap" parameterType="java.lang.Long">
+        SELECT * FROM t_adviser_info WHERE ai_id = #{adviserId}
+    </select>
+    <select id="getQuestion" resultMap="questionMap" parameterType="java.lang.Long">
+        select * from t_question WHERE id=#{questionId};
+    </select>
+    <select id="getAllQuestions" resultMap="baseMap">
+        SELECT sq.*,ai.*,tq.* FROM t_solve_question sq, t_adviser_info ai, t_question tq WHERE sq.sq_adviser_id = ai.ai_id
+        AND sq.sq_question_id = tq.id;
+    </select>
+</mapper>

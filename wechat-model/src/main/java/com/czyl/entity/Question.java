@@ -26,6 +26,16 @@ public class Question{
 
     private Long adviserId;
 
+    private Integer changeUser;
+
+    public Integer getChangeUser() {
+        return changeUser;
+    }
+
+    public void setChangeUser(Integer changeUser) {
+        this.changeUser = changeUser;
+    }
+
     public Long getAdviserId() {
         return adviserId;
     }

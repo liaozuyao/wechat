@@ -12,18 +12,6 @@
         <result column="ci_createtime" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="ci_superadmin" jdbcType="INTEGER" property="superAdmin"/>
     </resultMap>
-    <!--<resultMap id="companyDetail" type="com.czyl.dto.CompanyDto">-->
-        <!--<id column="ci_id" jdbcType="BIGINT" property="id"/>-->
-        <!--<result column="ci_name" jdbcType="VARCHAR" property="name"/>-->
-        <!--<result column="ci_code" jdbcType="VARCHAR" property="code"/>-->
-        <!--<result column="ci_contactname" jdbcType="VARCHAR" property="contactName"/>-->
-        <!--<result column="ci_contactphone" jdbcType="CHAR" property="contactPhone"/>-->
-        <!--<result column="ci_contactmail" jdbcType="VARCHAR" property="contactMail"/>-->
-        <!--<result column="ci_createtime" jdbcType="TIMESTAMP" property="createTime"/>-->
-        <!--<association column="sm_name" property="serviceModelName" select="selectServiceModelName" javaType="java.lang.String"/>-->
-        <!--<association column="cm_enclosure" property="serviceEnclosure" select="selectCompanyEnclosure" javaType="java.lang.String"/>-->
-    <!--</resultMap>-->
-
     <select id="selectCompanyById" resultMap="BaseResultMap">
         select ci_id,ci_name,ci_code,ci_contactname,ci_contactphone,ci_contactmail,ci_createtime from t_company_info WHERE ci_id = #{id};
     </select>
@@ -42,10 +30,10 @@
     <!--</select>-->
 
     <select id="selectCompanyEnclosure" resultType="java.lang.String" parameterType="java.lang.Long">
-        SELECT tm.cm_enclosure from t_comany_model tm, t_company_info tc, t_service_model ts WHERE ts.sm_id = tm.cm_serviceid AND tm.cm_comid = tc.ci_id AND tc.ci_id = #{id};
+        SELECT tm.cm_enclosure from t_company_model tm, t_company_info tc, t_service_model ts WHERE ts.sm_id = tm.cm_serviceid AND tm.cm_comid = tc.ci_id AND tc.ci_id = #{id};
     </select>
     <select id="selectServiceModelName" parameterType="java.lang.Long" resultType="java.lang.String">
-        SELECT ts.sm_name FROM t_service_model ts, t_comany_model tm, t_company_info tc WHERE ts.sm_id = tm.cm_serviceid AND tm.cm_comid = tc.ci_id AND tc.ci_id= #{id};
+        SELECT ts.sm_name FROM t_service_model ts, t_company_model tm, t_company_info tc WHERE ts.sm_id = tm.cm_serviceid AND tm.cm_comid = tc.ci_id AND tc.ci_id= #{id};
     </select>
     <insert id="insertCompany" parameterType="com.czyl.entity.Company">
         INSERT INTO t_company_info(ci_name,ci_code,ci_contactname,ci_contactphone,ci_contactmail)

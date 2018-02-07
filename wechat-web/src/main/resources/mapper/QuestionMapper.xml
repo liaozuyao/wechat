@@ -4,54 +4,33 @@
   <resultMap id="BaseResultMap" type="com.czyl.entity.Question">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="field" jdbcType="BIGINT" property="fieldId" />
+    <result column="fieldid" jdbcType="BIGINT" property="fieldId" />
     <result column="urgent" jdbcType="INTEGER" property="urgent" />
-    <result column="file" jdbcType="VARCHAR" property="file" />
-    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="files" jdbcType="VARCHAR" property="file" />
+    <result column="describes" jdbcType="VARCHAR" property="describe" />
     <result column="status" jdbcType="INTEGER" property="status"/>
     <result column="createtime" jdbcType="TIMESTAMP" property="createTime"/>
     <result column="hopetime" jdbcType="TIMESTAMP" property="hopeTime"/>
     <result column="companyid" jdbcType="BIGINT" property="companyId"/>
-    <result column="adviser" jdbcType="BIGINT" property="adviser"/>
+    <result column="adviser" jdbcType="BIGINT" property="adviserId"/>
+    <result column="changeuser" jdbcType="INTEGER" property="changeUser"/>
   </resultMap>
-
   <insert id="insertQuestion" parameterType="com.czyl.entity.Question">
-    INSERT INTO t_question(title, field, urgent, file, describe, status, createtime, hopetime,companyid,adviser)
-    VALUES (#{title,jdbcType=VARCHAR},#{field,jdbcType=BIGINT},#{urgent,jdbcType=INTEGER},#{file,jdbcType=VARCHAR},
-    #{describe,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP},#{hopeTime,jdbcType=TIMESTAMP},
-    #{companyId,jdbcType=BIGINT},#{adviser,jdbcType=BIGINT});
+    INSERT INTO t_question(title, fieldid, urgent, files, describes, hopetime,companyid,adviser)
+    VALUES (#{title,jdbcType=VARCHAR},#{fieldId,jdbcType=BIGINT},#{urgent,jdbcType=INTEGER},#{file,jdbcType=VARCHAR},
+    #{describe,jdbcType=VARCHAR},#{hopeTime,jdbcType=TIMESTAMP},#{companyId,jdbcType=BIGINT},#{adviserId,jdbcType=BIGINT});
   </insert>
-  <select id="getAllQuestions" resultMap="BaseResultMap">
-    select * from t_question
+  <update id="updateQuestionStatus">
+    UPDATE t_question SET status = #{status,jdbcType=INTEGER}, changeuser=#{changeUser,jdbcType=INTEGER} WHERE id = #{id,jdbcType=BIGINT} AND
+    companyid=#{companyId,jdbcType=BIGINT};
+  </update>
+  <select id="getQuestionByCompanyId" resultMap="BaseResultMap">
+    SELECT * FROM t_question WHERE companyid = #{companyId};
   </select>
-  <select id="countQuestion" resultType="java.lang.Integer">
-    SELECT count(f_id) FROM t_question
+  <select id="getQuestionByStatus" resultMap="BaseResultMap">
+    SELECT * FROM t_question WHERE status = #{status};
   </select>
-  <select id="getQuestionByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
-      SELECT f_id, f_title, f_fieldid, f_nodeid, f_phone, f_eventid, f_influence, f_urgent, f_original,
-    f_originalmobile, f_originalphone, f_originalmail, f_file, f_describe, f_status, f_createtime, f_userid
-    FROM t_question WHERE f_userid = #{userId,jdbcType=BIGINT};
-  </select>
-
-  <select id="getQuestionDetails" parameterType="java.lang.Long" resultMap="BaseResultMap">
-     SELECT f_id, f_title, f_fieldid, f_nodeid, f_phone, f_eventid, f_influence, f_urgent, f_original,
-    f_originalmobile, f_originalphone, f_originalmail, f_file, f_describe, f_status, f_createtime, f_userid
-    FROM t_question WHERE f_id = #{id,jdbcType=BIGINT};
-  </select>
-
-  <select id="getQuestionByField" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select * from t_question where f_fieldid = #{fieldId,jdbcType=BIGINT};
-  </select>
-
-  <select id="getQuestionByNodeId" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    SELECT * FROM t_question WHERE f_nodeid = #{nodeId,jdbcType=BIGINT};
-  </select>
-
-  <select id="getQuestionByStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    SELECT * from t_question WHERE f_status = #{status,jdbcType=INTEGER};
-  </select>
-  
   <select id="getQuestionVague" resultMap="BaseResultMap">
-    SELECT * FROM  t_question WHERE f_id LIKE '%${vague}%' AND f_userid=#{userId,jdbcType=BIGINT};
+    SELECT * FROM  t_question WHERE id LIKE '%${vague}%' AND companyid = #{companyId,jdbcType=BIGINT};
   </select>
 </mapper>

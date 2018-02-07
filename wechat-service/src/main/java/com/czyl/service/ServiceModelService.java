@@ -6,7 +6,11 @@ import java.util.List;
 
 public interface ServiceModelService {
 
-    Integer insert(ServiceModel serviceModel);
+    Integer insert(String name);
 
     List<ServiceModel> selectServiceName();
+
+    Integer updateServiceName(String name, Long id);
+
+    Integer deleteServiceName(Integer isDelete, Long id);
 }

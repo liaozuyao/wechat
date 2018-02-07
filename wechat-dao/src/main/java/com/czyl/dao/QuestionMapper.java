@@ -1,6 +1,7 @@
 package com.czyl.dao;
 
 import com.czyl.entity.Question;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -8,7 +9,9 @@ public interface QuestionMapper {
 
     Integer insertQuestion(Question question);
 
-    List<Question> getAllQuestion();
+    Integer updateQuestionStatus(@Param("status") Integer status, @Param("changeUser") Integer changeUser, @Param("id") Long id, @Param("companyId") Long companyId);
 
-    Integer updateQuestionStatus(Long id, Long companyId);
+    List<Question> getQuestionByCompanyId(Long companyId);
+
+    List<Question> getQuestionByStatus(Integer status);
 }

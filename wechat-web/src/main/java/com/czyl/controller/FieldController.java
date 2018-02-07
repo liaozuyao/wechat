@@ -27,12 +27,24 @@ public class FieldController extends BaseController{
     @RequestMapping(value = "/updateField", method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateField(@RequestBody Field field){
-        return null;
+        if(field.getName() != ""){
+            if(fieldService.updateField(field) == 1){
+                return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
+            }
+            return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
+        }
+        return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"名字不能为空");
     }
 
     @RequestMapping(value = "/insertField", method = RequestMethod.POST)
     @ResponseBody
     public ViewData insertField(@RequestBody Field field){
-        return null;
+        if(field.getName() != ""){
+            if(fieldService.insertField(field) == 1){
+                return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
+            }
+            return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
+        }
+        return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"名字不能为空");
     }
 }
