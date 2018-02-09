@@ -6,6 +6,6 @@ package com.czyl.utils;
 public class Test
 {
     public static void main(String[] args) {
-        System.out.println(40 % 10);
+        System.out.println(Tools.getRandomCode(10));
     }
 }

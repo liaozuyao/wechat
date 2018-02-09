@@ -12,12 +12,9 @@
         <id column="ci_id" jdbcType="BIGINT" property="id"/>
         <result column="ci_name" jdbcType="VARCHAR" property="name"/>
         <result column="ci_code" jdbcType="VARCHAR" property="code"/>
-        <result column="ci_contactname" jdbcType="VARCHAR" property="contactName"/>
         <result column="ci_contactphone" jdbcType="CHAR" property="contactPhone"/>
         <result column="ci_contactmail" jdbcType="VARCHAR" property="contactMail"/>
-        <result column="ci_password" jdbcType="VARCHAR" property="password"/>
         <result column="ci_createtime" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="ci_superadmin" jdbcType="INTEGER" property="superAdmin"/>
     </resultMap>
     <resultMap id="serviceModelMap" type="com.czyl.entity.ServiceModel">
         <id column="sm_id" jdbcType="BIGINT" property="id"/>

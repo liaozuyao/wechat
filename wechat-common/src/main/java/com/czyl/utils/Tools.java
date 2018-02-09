@@ -17,8 +17,8 @@ public class Tools {
      *
      * @return
      */
-    public static StringBuilder getRandom(int x) {
-        String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrestuvwxyz";
+    public static StringBuilder getRandomCode(int x) {
+        String str = "0123456789";
         StringBuilder sb = new StringBuilder(x);
         for (int i = 0; i < x; i++) {
             char ch = str.charAt(new Random().nextInt(str.length()));

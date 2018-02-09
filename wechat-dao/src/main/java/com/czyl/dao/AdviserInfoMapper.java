@@ -9,4 +9,6 @@ public interface AdviserInfoMapper {
     Integer insertAdviserInfo(AdviserInfo adviserInfo);
 
     List<AdviserInfo> getAllAdviser();
+
+    Integer updateAdviserInfo(AdviserInfo adviserInfo);
 }

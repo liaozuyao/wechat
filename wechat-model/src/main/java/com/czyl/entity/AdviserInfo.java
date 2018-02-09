@@ -6,6 +6,15 @@ public class AdviserInfo {
     private String name;
     private String phone;
     private String mail;
+    private Integer type;
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
     public Long getId() {
         return id;

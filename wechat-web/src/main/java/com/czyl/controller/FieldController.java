@@ -24,6 +24,16 @@ public class FieldController extends BaseController{
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功", fieldService.selectAll());
     }
 
+    @RequestMapping(value = "/addField.html")
+    public String addField(){
+        return "admin/addField";
+    }
+
+    @RequestMapping(value = "allField.html")
+    public String allField(){
+        return "admin/allField";
+    }
+
     @RequestMapping(value = "/updateField", method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateField(@RequestBody Field field){

@@ -1,8 +1,6 @@
 package com.czyl.controller;
 
-import com.czyl.common.StatusConstants;
-import com.czyl.entity.Admin;
-import com.czyl.service.AdminService;
+import com.czyl.service.CompanyService;
 import com.czyl.utils.ViewData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,39 +10,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 @Controller
 public class MainController extends BaseController{
 
     @Resource
-    private AdminService adminService;
+    private CompanyService companyService;
 
     @RequestMapping("/index.html")
-    public String mainPage(){
-        return "index";
+    public String ordinaryLoginPage(){
+        return "login";
     }
 
-    @RequestMapping("/about.html")
-    public String aboutPage(){
-        return "about";
-    }
-
-    @RequestMapping("/admin.html")
-    public String adminLogin(){
-        return "adminLogin";
-    }
-
-    @RequestMapping(value = "/loginAdmin", method = RequestMethod.POST)
+    @RequestMapping(value = "/loginAction", method = RequestMethod.POST)
     @ResponseBody
     public ViewData login(@RequestParam String userName, @RequestParam String password,
-                          HttpServletRequest request){
-        Admin admin = adminService.select(userName, password);
-        if(admin != null){
-            request.getSession().setAttribute("admin", admin);
-            return buildSuccessCodeViewData(StatusConstants.SUCCESS_CODE, "成功");
-        } else {
-            return buildFailureJson(StatusConstants.ERROR_CODE, "错误");
-        }
+                          HttpServletRequest request) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+//        password = MD5Utils.EncoderByMd5(password);
+//        Company company = companyService.companyLogin(userName, password);
+//        if(company != null){
+//            request.getSession().setAttribute("company", company);
+//            return buildSuccessCodeViewData(StatusConstants.SUCCESS_CODE, "成功");
+//        } else {
+//            return buildFailureJson(StatusConstants.ERROR_CODE, "账号或密码错误");
+//        }
+        return null;
     }
 
     @RequestMapping("/goSuccess")

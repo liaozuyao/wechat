@@ -3,6 +3,7 @@ package com.czyl.controller;
 import com.czyl.common.StatusConstants;
 import com.czyl.entity.Question;
 import com.czyl.service.QuestionService;
+import com.czyl.utils.CommonUtil;
 import com.czyl.utils.ViewData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,9 @@ public class QuestionController extends BaseController {
     @ResponseBody
     public ViewData updateQuestionStatus(@RequestParam("status") Integer status, @RequestParam("changeUser") Integer changeUser,
                                          @RequestParam("id") Long id, @RequestParam("companyId") Long companyId){
+        if(CommonUtil.isEmpty(status)||CommonUtil.isEmpty(changeUser)||CommonUtil.isEmpty(id)||CommonUtil.isEmpty(companyId)){
+            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"字段不能为空");
+        }
         Integer integer = questionService.updateQuestionStatus(status, changeUser, id, companyId);
         if(integer == 1){
             return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
@@ -42,7 +46,7 @@ public class QuestionController extends BaseController {
     @RequestMapping(value = "/getQuestionByCompanyId" ,method = RequestMethod.POST)
     @ResponseBody
     public ViewData getQuestionByCompanyId(@RequestParam("companyId")Long companyId){
-        if(companyId.equals(null) || companyId == 0){
+        if(CommonUtil.isEmpty(companyId) || companyId == 0){
             return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数不能为空");
         }
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",questionService.getQuestionByCompanyId(companyId));
@@ -51,7 +55,7 @@ public class QuestionController extends BaseController {
     @RequestMapping(value = "/getQuestionByStatus", method = RequestMethod.POST)
     @ResponseBody
     public ViewData getQuestionByStatus(@RequestParam("status") Integer status){
-        if(status.equals(null) || status == 0){
+        if(CommonUtil.isEmpty(status) || status == 0){
             return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数不能为空");
         }
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",questionService.getQuestionByStatus(status));

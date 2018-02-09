@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface AdviserInfoService {
 
-    Integer insertAdviserInfo(AdviserInfo adviserInfo);
+    Integer insertAdviserInfo(String name, String phone, String mail, Integer type);
 
     List<AdviserInfo> getAllAdviser();
+
+    Integer updateAdviserInfo(String name, String phone, String mail, Long id, Integer type);
 }

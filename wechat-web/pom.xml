@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>wechat-web</artifactId>
     <packaging>war</packaging>
-    <name>wechat-web</name>
+    <name>wechat</name>
     <dependencies>
         <dependency>
             <groupId>com.czyl</groupId>
@@ -143,6 +143,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>wechat-web</finalName>
+        <finalName>wechat</finalName>
     </build>
 </project>

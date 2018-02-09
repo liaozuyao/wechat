@@ -1,52 +1,50 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page trimDirectiveWhitespaces="true" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <html>
 <head>
-    <title>添加公司</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
-    <link rel="stylesheet" href="<%=basePath%>bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="<%=basePath%>bootstrap/css/bootstrap-theme.css">
-    <link rel="stylesheet" href="<%=basePath%>bootstrap/css/bootstrap-responsive.css">
-    <script type="text/javascript" src="<%=basePath%>bootstrap/js/bootstrap.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <style>
-    </style>
+    <title>添加公司账号</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="<%=basePath%>static/layui/css/layui.css" media="all">
+    <script src="<%=basePath%>static/jquery/jQuery.js"></script>
+    <script src="<%=basePath%>static/layui/layui.js"></script>
 </head>
 <body>
-<br>
-<br>
-<div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <form role="form" action="<%=basePath%>insertCompany" method="get">
-                <div class="form-group">
-                    <label for="name">公司名字</label>
-                    <input class="form-control" id="name" type="text" />
-                </div>
-                <button type="button" class="btn btn-default">提交</button>
-            </form>
-        </div>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
+    <legend><i class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;添加公司账号</legend>
+</fieldset>
+<div class="layui-form-item">
+    <label class="layui-form-label">公司名字</label>
+    <div class="layui-input-block">
+        <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入公司名字" autocomplete="off"
+               class="layui-input">
     </div>
 </div>
-</body>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <button id="commitCompany" class="layui-btn">立即提交</button>
+        <button id="back" class="layui-btn layui-btn-primary">返回</button>
+    </div>
+</div>
 <script type="text/javascript">
-    $(".btn-default").click(function () {
+    $("#commitCompany").click(function () {
         var name = $("#name").val();
-        $.get("<%=basePath%>insertCompany",{
-            name : name
+        $.post("<%=basePath%>insertCompany", {
+            name: name
         }, function (data) {
-            if(data.code == 200){
+            if (data.code == 200) {
                 alert(data.msg);
+                window.location.reload();
             } else {
                 alert(data.msg);
             }
         })
     })
 </script>
+</body>
 </html>

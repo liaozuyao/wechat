@@ -25,7 +25,6 @@
 
         <nav>
             <ul>
-                <li><a href="<%=basePath%>addChangeList">新建变更单</a></li>
                 <li><a href="<%=basePath%>addQuestion">新建问题提交</a></li>
                 <li><a href="<%=basePath%>about.html">关于我们</a></li>
             </ul>

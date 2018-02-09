@@ -5,18 +5,15 @@
         <id column="ci_id" jdbcType="BIGINT" property="id"/>
         <result column="ci_name" jdbcType="VARCHAR" property="name"/>
         <result column="ci_code" jdbcType="VARCHAR" property="code"/>
-        <result column="ci_contactname" jdbcType="VARCHAR" property="contactName"/>
         <result column="ci_contactphone" jdbcType="CHAR" property="contactPhone"/>
         <result column="ci_contactmail" jdbcType="VARCHAR" property="contactMail"/>
-        <result column="ci_password" jdbcType="VARCHAR" property="password"/>
         <result column="ci_createtime" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="ci_superadmin" jdbcType="INTEGER" property="superAdmin"/>
     </resultMap>
     <select id="selectCompanyById" resultMap="BaseResultMap">
-        select ci_id,ci_name,ci_code,ci_contactname,ci_contactphone,ci_contactmail,ci_createtime from t_company_info WHERE ci_id = #{id};
+        select ci_id,ci_name,ci_code,ci_contactphone,ci_contactmail,ci_createtime from t_company_info WHERE ci_id = #{id};
     </select>
     <select id="selectCompany" resultMap="BaseResultMap">
-        select ci_id,ci_name,ci_code,ci_contactname,ci_contactphone,ci_contactmail,ci_createtime from t_company_info;
+        select ci_id,ci_name,ci_code,ci_contactphone,ci_contactmail,ci_createtime from t_company_info;
     </select>
 
     <!--<select id="selectCompany" resultMap="companyDetail">-->
@@ -35,15 +32,11 @@
     <select id="selectServiceModelName" parameterType="java.lang.Long" resultType="java.lang.String">
         SELECT ts.sm_name FROM t_service_model ts, t_company_model tm, t_company_info tc WHERE ts.sm_id = tm.cm_serviceid AND tm.cm_comid = tc.ci_id AND tc.ci_id= #{id};
     </select>
-    <insert id="insertCompany" parameterType="com.czyl.entity.Company">
-        INSERT INTO t_company_info(ci_name,ci_code,ci_contactname,ci_contactphone,ci_contactmail)
-        VALUES (#{name,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{contactName,jdbcType=VARCHAR},
-        #{contactPhone,jdbcType=VARCHAR},#{contactMail,jdbcType=VARCHAR});
+    <insert id="insertCompany" parameterType="java.lang.String">
+        INSERT INTO t_company_info(ci_name) VALUES (#{name,jdbcType=VARCHAR});
     </insert>
     <update id="updateCompany">
         UPDATE t_company_info SET ci_name = #{name,jdbcType=VARCHAR}, ci_code = #{code,jdbcType=VARCHAR},
-        ci_contactname = #{contactName,jdbcType=VARCHAR},ci_contactphone = #{contactPhone,jdbcType=VARCHAR},ci_contactmail = #{contactMail,jdbcType=VARCHAR},
-        ci_password = #{password,jdbcType=VARCHAR}
-        WHERE ci_id = #{id,jdbcType=BIGINT}
+        ci_contactphone = #{contactPhone,jdbcType=VARCHAR},ci_contactmail = #{contactMail,jdbcType=VARCHAR} WHERE ci_id = #{id,jdbcType=BIGINT}
     </update>
 </mapper>

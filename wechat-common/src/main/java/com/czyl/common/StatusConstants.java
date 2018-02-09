@@ -9,4 +9,6 @@ public class StatusConstants {
     public static final Integer ERROR_CODE = 202;
     /** 参数异常 */
     public static final Integer ARGUMENTS_EXCEPTION = 203;
+    /** 无此权限 */
+    public static final Integer NOT_JURISDICTION = 204;
 }

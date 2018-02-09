@@ -1,6 +1,7 @@
 package com.czyl.dao;
 
 import com.czyl.entity.Company;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,11 +10,11 @@ import java.util.List;
  */
 public interface CompanyMapper {
 
-    Integer insertCompany(Company company);
+    Integer insertCompany(String name);
 
-    Integer updateCompany(Company company);
+    Integer updateCompany(@Param("code") String code, @Param("name") String name, @Param("contactPhone") String contactPhone, @Param("contactMail") String contactMail, @Param("id") Long id);
 
     List<Company> selectCompany();
 
-    List<Company> selectCompanyById(Long id);
+    Company selectCompanyById(Long id);
 }
