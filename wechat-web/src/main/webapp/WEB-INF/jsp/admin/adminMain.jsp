@@ -16,7 +16,7 @@
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
-    <legend><i class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;管理员相关操作</legend>
+    <legend><i id="back-icon" style="margin-left: -15px" class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;管理员相关操作</legend>
 </fieldset>
 <br>
 <br>
@@ -53,30 +53,5 @@
     </div>
 </div>
 </body>
-<script type="text/javascript">
-      $("#addcompany").click(function () {
-          window.location="<%=basePath%>insertCompany.html";
-      })
-      $("#allcompany").click(function () {
-          window.location="<%=basePath%>allCompany.html";
-      })
-      $("#addaccount").click(function () {
-          window.location="<%=basePath%>insertAccount.html";
-      })
-      $("#addmodel").click(function () {
-          window.location="<%=basePath%>addServiceModel.html";
-      })
-      $("#allmodel").click(function () {
-          window.location="<%=basePath%>allServiceModel.html"
-      })
-      $("#addadviser").click(function () {
-          window.location="<%=basePath%>insertAdviserOrDev.html";
-      })
-      $("#addfield").click(function () {
-          window.location="<%=basePath%>addField.html"
-      })
-      $("#allfield").click(function () {
-          window.location="<%=basePath%>allField.html";
-      })
-</script>
+<script src="<%=basePath%>static/js/adminMain.js"></script>
 </html>

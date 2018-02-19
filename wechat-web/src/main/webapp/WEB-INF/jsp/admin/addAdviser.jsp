@@ -23,20 +23,45 @@
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
-    <legend><i class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;添加实施顾问或开发</legend>
+    <legend><i id="back-icon" style="margin-left: -15px" class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;添加实施顾问或开发顾问</legend>
 </fieldset>
 <div class="layui-form-item">
     <label class="layui-form-label">名字</label>
     <div class="layui-input-block">
-        <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入名字" autocomplete="off"
+        <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入名字(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
+    <label class="layui-form-label">联系电话</label>
     <div class="layui-input-block">
-        <button id="commitCompany" class="layui-btn">立即提交</button>
-        <button id="back" class="layui-btn layui-btn-primary">返回</button>
+        <input type="text" id="phone" maxlength="11" name="phone" required lay-verify="required" placeholder="请输入联系电话(必填)" autocomplete="off"
+               class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">邮箱</label>
+    <div class="layui-input-block">
+        <input type="email" id="email" name="email" required lay-verify="required" placeholder="请输入邮箱(必填)" autocomplete="off"
+               class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">实施/开发</label>
+    <div class="layui-input-block">
+        <select id="type" name="type" lay-verify="required" class="layui-input">
+            <option lay-verify="required" value="9">请选择(必填)</option>
+            <option lay-verify="required" value="7">实施</option>
+            <option lay-verify="required" value="8">开发</option>
+        </select>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <button id="commitAdvDev" class="layui-btn">立即提交</button>
+        <button id="reset" class="layui-btn layui-btn-primary">清空</button>
     </div>
 </div>
 </body>
+<script src="<%=basePath%>static/js/addAdviser.js"></script>
 </html>

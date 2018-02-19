@@ -64,7 +64,7 @@
             if(username == "" || password == ""){
                 alert("请正确填写");
             } else {
-                $.post("<%=basePath %>accountLogin",{
+                $.post("<%=basePath %>superAdminLogin",{
                     account : username,
                     password : password
                 }, function (data) {

@@ -16,27 +16,39 @@ import java.security.NoSuchAlgorithmException;
 @Controller
 public class MainController extends BaseController{
 
-    @Resource
-    private CompanyService companyService;
-
     @RequestMapping("/index.html")
     public String ordinaryLoginPage(){
         return "login";
     }
 
-    @RequestMapping(value = "/loginAction", method = RequestMethod.POST)
-    @ResponseBody
-    public ViewData login(@RequestParam String userName, @RequestParam String password,
-                          HttpServletRequest request) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-//        password = MD5Utils.EncoderByMd5(password);
-//        Company company = companyService.companyLogin(userName, password);
-//        if(company != null){
-//            request.getSession().setAttribute("company", company);
-//            return buildSuccessCodeViewData(StatusConstants.SUCCESS_CODE, "成功");
-//        } else {
-//            return buildFailureJson(StatusConstants.ERROR_CODE, "账号或密码错误");
-//        }
-        return null;
+    @RequestMapping(value = "/adminMain.html")
+    public String adminLogin(){
+        return "/admin/adminMain";
+    }
+
+    @RequestMapping(value = "/customerLogin.html")
+    public String clientLogin(){
+        return "clientLogin";
+    }
+
+    @RequestMapping(value = "customerMain.html")
+    public String clientMain(){
+        return "clientMain";
+    }
+
+    @RequestMapping(value = "updateAccInfo.html")
+    public String updateAccInfo(){
+        return "updateCompanyContact";
+    }
+
+    @RequestMapping(value = "updateAccPasswd.html")
+    public String updateAccPasswd(){
+        return "updateAccPassword";
+    }
+
+    @RequestMapping(value = "adviserOrDevlpLogin.html")
+    public String advDevLogin(){
+        return "/admin/advDevLogin";
     }
 
     @RequestMapping("/goSuccess")

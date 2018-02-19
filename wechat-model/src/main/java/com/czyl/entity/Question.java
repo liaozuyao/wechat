@@ -10,7 +10,7 @@ public class Question{
 
     private Long fieldId;
 
-    private Integer urgent;
+    private Long urgent;
 
     private String file;
 
@@ -84,6 +84,15 @@ public class Question{
         this.fieldId = fieldId;
     }
 
+    public Long getUrgent() {
+
+        return urgent;
+    }
+
+    public void setUrgent(Long urgent) {
+        this.urgent = urgent;
+    }
+
     public String getFile() {
         return file;
     }
@@ -106,14 +115,6 @@ public class Question{
 
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
-    }
-
-    public Integer getUrgent() {
-        return urgent;
-    }
-
-    public void setUrgent(Integer urgent) {
-        this.urgent = urgent;
     }
 
     public Date getHopeTime() {

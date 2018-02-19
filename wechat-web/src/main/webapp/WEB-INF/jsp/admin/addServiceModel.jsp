@@ -23,7 +23,7 @@
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
-    <legend><i class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;添加服务模块名称</legend>
+    <legend><i id="back-icon" style="margin-left: -15px" class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;添加服务模块名称</legend>
 </fieldset>
 <div class="layui-form-item">
     <label class="layui-form-label">模块名字</label>

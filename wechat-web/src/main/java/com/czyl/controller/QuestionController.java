@@ -1,7 +1,7 @@
 package com.czyl.controller;
 
 import com.czyl.common.StatusConstants;
-import com.czyl.entity.Question;
+import com.czyl.entity.CompanyContact;
 import com.czyl.service.QuestionService;
 import com.czyl.utils.CommonUtil;
 import com.czyl.utils.ViewData;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by liaozuyao on 2017/12/19.
@@ -19,10 +20,34 @@ public class QuestionController extends BaseController {
     @Resource
     private QuestionService questionService;
 
+    @RequestMapping(value = "addQuestion.html")
+    public String addQuestion(){
+        return "addQuestion";
+    }
+
+    @RequestMapping(value = "allQuestion.html")
+    public String allQuestion() {
+        return "allQuestion";
+    }
+
     @RequestMapping(value = "/insertQuestion", method = RequestMethod.POST)
     @ResponseBody
-    public ViewData insertQuestion(@RequestBody Question question){
-        Integer status = questionService.insertQuestion(question);
+    public ViewData insertQuestion(@RequestParam("title")String title, @RequestParam("fieldId")Long fieldId,
+                                   @RequestParam("urgent")Long urgent, @RequestParam("files")String files,
+                                   @RequestParam("describe")String describe, @RequestParam("hopeTime") String hopeTime,
+                                   @RequestParam("adviser")Long adviser, HttpServletRequest request){
+        if(CommonUtil.isEmpty(title) || fieldId == 0 || urgent == 0 || CommonUtil.isEmpty(describe)){
+            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"必填字段不能为空");
+        }
+        if(CommonUtil.isEmpty(hopeTime)){
+            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"请填入希望解决时间");
+        }
+        CompanyContact companyContact = (CompanyContact)request.getSession().getAttribute("companyContact");
+        if(companyContact == null){
+            return buildFailureJson(StatusConstants.SESSION_OUT,"会话超时，请重新登录");
+        }
+        long companyId = companyContact.getCompanyId();
+        Integer status = questionService.insertQuestion(title, fieldId, urgent, files, describe, hopeTime, companyId, adviser);
         if(status == 1){
             return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
         }
@@ -43,12 +68,14 @@ public class QuestionController extends BaseController {
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
-    @RequestMapping(value = "/getQuestionByCompanyId" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/getQuestionByCompanyId")
     @ResponseBody
-    public ViewData getQuestionByCompanyId(@RequestParam("companyId")Long companyId){
-        if(CommonUtil.isEmpty(companyId) || companyId == 0){
-            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数不能为空");
+    public ViewData getQuestionByCompanyId(HttpServletRequest request){
+        CompanyContact companyContact = (CompanyContact)request.getSession().getAttribute("companyContact");
+        if(companyContact == null){
+            return buildFailureJson(StatusConstants.SESSION_OUT,"会话超时，请重新登录");
         }
+        Long companyId = companyContact.getCompanyId();
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",questionService.getQuestionByCompanyId(companyId));
     }
 

@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%
     String path = request.getContextPath();
@@ -16,28 +14,39 @@
     <link rel="stylesheet" href="<%=basePath%>static/layui/css/layui.css" media="all">
     <script src="<%=basePath%>static/jquery/jQuery.js"></script>
     <script src="<%=basePath%>static/layui/layui.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url : '<%=basePath%>allCompany',
+            type : 'GET',
+            success : function (result) {
+                var dom = document.getElementById("company");
+                var info = "";
+                for(var i = 0;i<result.data.length; i++){
+                    info += "<option value="+ result.data[i].id +">"+result.data[i].name+"</option>";
+                }
+                dom.innerHTML = null;
+                dom.innerHTML = info;
+            }
+        })
+    </script>
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
-    <legend><i class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;添加公司联系人账号</legend>
+    <legend><i id="back-icon" style="margin-left: -15px" class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;添加公司联系人账号</legend>
 </fieldset>
 <form class="layui-form" action="">
     <div class="layui-form-item">
         <label class="layui-form-label">请选择公司</label>
         <div class="layui-input-block">
             <select id="company" name="city" lay-verify="required">
-                <option value=""></option>
-                <c:forEach items="${companies}" var="items">
-                    <option value="${items.id}">${items.name}</option>
-                </c:forEach>
+                <option id="first" value='0'>请选择</option>
             </select>
         </div>
     </div>
 </form>
 <div class="layui-form-item">
     <div class="layui-input-block">
-        <button id="commit" class="layui-btn">立即提交</button>
-        <button id="back" class="layui-btn layui-btn-primary">返回</button>
+        <button style="margin-left: 30px;" id="commit" class="layui-btn">立即提交</button>
     </div>
 </div>
 <div class="layui-form-item" id="accDiv" style="text-align: center">
@@ -55,6 +64,7 @@
                     dom.innerHTML = null;
                     var info = "<span>账号："+data.msg+"</span>";
                     dom.innerHTML +=info;
+                    $("#commit").attr('disabled',"true");
                 } else {
                     alert(data.msg);
                 }

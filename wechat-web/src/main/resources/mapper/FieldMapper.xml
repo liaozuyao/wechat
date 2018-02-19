@@ -14,4 +14,7 @@
     <select id="selectAll" resultMap="BaseResultMap">
         SELECT * FROM t_field;
     </select>
+    <delete id="deleteField" parameterType="java.lang.Long">
+        DELETE FROM t_field WHERE t_field.id = #{id};
+    </delete>
 </mapper>

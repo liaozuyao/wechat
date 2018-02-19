@@ -9,7 +9,8 @@ import java.util.List;
  */
 public interface QuestionService {
 
-    Integer insertQuestion(Question question);
+    Integer insertQuestion(String title, Long fieldId, Long urgent, String files, String describe, String hopeTime,
+                          Long companyId, Long adviser);
 
     Integer updateQuestionStatus(Integer status, Integer changeUser, Long id, Long companyId);
 

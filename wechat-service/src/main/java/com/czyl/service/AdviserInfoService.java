@@ -11,4 +11,8 @@ public interface AdviserInfoService {
     List<AdviserInfo> getAllAdviser();
 
     Integer updateAdviserInfo(String name, String phone, String mail, Long id, Integer type);
+
+    AdviserInfo adviserOrDevlpLogin(String phone, String password);
+
+    List<AdviserInfo> getAllByType(Integer type);
 }

@@ -11,4 +11,6 @@ public class StatusConstants {
     public static final Integer ARGUMENTS_EXCEPTION = 203;
     /** 无此权限 */
     public static final Integer NOT_JURISDICTION = 204;
+    /** 会话超时，请重新登录 */
+    public static final Integer SESSION_OUT = 205;
 }

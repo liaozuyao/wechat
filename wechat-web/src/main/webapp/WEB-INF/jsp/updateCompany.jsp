@@ -17,7 +17,7 @@
 <body>
 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px;">
-    <legend><i class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;修改公司信息</legend>
+    <legend><i id="back-icon" style="margin-left: -15px" class="layui-icon">&#xe65c;</i>&nbsp;&nbsp;修改完善公司信息</legend>
 </fieldset>
 
 <div class="layui-form-item">
@@ -35,43 +35,34 @@
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">联系人名字</label>
-    <div class="layui-input-block">
-        <input type="text" id="contactname" name="contactname" required lay-verify="required" placeholder="请输入客户联系人名字"
-               autocomplete="off" class="layui-input">
-    </div>
-</div>
-<div class="layui-form-item">
-    <label class="layui-form-label">联系人电话</label>
+    <label class="layui-form-label">联系电话</label>
     <div class="layui-input-block">
         <input type="tel" id="contactphone" name="contactphone" maxlength="11" required lay-verify="required"
-               placeholder="请输入客户联系人电话" autocomplete="off" class="layui-input">
+               placeholder="请输入联系电话" autocomplete="off" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">联系人邮箱</label>
+    <label class="layui-form-label">联系邮箱</label>
     <div class="layui-input-block">
-        <input type="email" id="contactmail" name="contactmail" required lay-verify="required" placeholder="请输入客户联系人邮箱"
+        <input type="email" id="contactmail" name="contactmail" required lay-verify="required" placeholder="请输入联系邮箱"
                autocomplete="off" class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <div class="layui-input-block">
         <button id="commitInfo" class="layui-btn">立即提交</button>
-        <button id="back" class="layui-btn layui-btn-primary">返回</button>
+        <button id="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
 </div>
 <script>
     $("#commitInfo").click(function () {
         var name = $("#name").val();
         var code = $("#code").val();
-        var contactName = $("#contactname").val();
         var contactPhone = $("#contactphone").val();
         var contactMail = $("#contactmail").val();
         $.post("<%=basePath%>updateComanyInfo", {
             'name': name,
             'code': code,
-            'contactName': contactName,
             'contactPhone': contactPhone,
             'contactMail': contactMail
         }, function (data) {
@@ -83,7 +74,15 @@
             }
         })
     })
-
+    $("#back-icon").click(function () {
+        window.location.href = "<%=basePath%>customerMain.html";
+    })
+    $("#reset").click(function () {
+        $("#name").val("");
+        $("#code").val("");
+        $("#contactphone").val("");
+        $("#contactmail").val("");
+    })
 </script>
 </body>
 </html>

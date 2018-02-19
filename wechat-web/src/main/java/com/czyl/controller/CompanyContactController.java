@@ -38,10 +38,16 @@ public class CompanyContactController extends BaseController{
         return mav;
     }
 
+    @RequestMapping(value = "/updateCompany.html")
+    public String updateCompanyModel() {
+        return "updateCompany";
+    }
+
+
     @RequestMapping(value = "/insertAccount",method = RequestMethod.POST)
     @ResponseBody
     public ViewData insertAccount(@RequestParam("companyId")Long companyId){
-        if(CommonUtil.isEmpty(companyId)){
+        if(companyId == 0){
             return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"请选择公司");
         }
         StringBuilder sbAccount = new StringBuilder("CZ").append(Tools.getRandomCode(Constants.ACCOUNT_BIT));
@@ -55,32 +61,44 @@ public class CompanyContactController extends BaseController{
     @RequestMapping(value = "/updateCompanyContact", method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateCompanyContact(@RequestParam("name") String name, @RequestParam("phone") String phone,
-                                         @RequestParam("mail") String mail){
-        if(CommonUtil.isEmpty(name) || CommonUtil.isEmpty(mail)){
-            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数为空");
+                                         @RequestParam("mail") String mail, HttpServletRequest request){
+        if(CommonUtil.isEmpty(name) || CommonUtil.isEmpty(mail) || CommonUtil.isEmpty(phone)){
+            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"必填字段不能为空");
         }
         if(!phone.matches(Constants.REGEX_MOBILE)){
             return buildFailureJson(StatusConstants.ARGUMENTS_EXCEPTION,"输入正确的电话号码");
         }
-        // TODO
-        Long id = 1L;
-        Integer integer = companyContactService.updateCompanyContact(name, phone, mail, id);
+        if(!mail.matches(Constants.REGEX_EMAIL)){
+            return buildFailureJson(StatusConstants.ARGUMENTS_EXCEPTION,"邮箱格式错误,请重新输入");
+        }
+        CompanyContact companyContact = (CompanyContact)request.getSession().getAttribute("companyContact");
+        if(companyContact == null){
+            return buildFailureJson(StatusConstants.SESSION_OUT,"会话超时，请重新登录");
+        }
+        Integer integer = companyContactService.updateCompanyContact(name, phone, mail, companyContact.getId());
         if(integer == 1){
             return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
         }
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
-    @RequestMapping(value = "/updateContactPassword",method = RequestMethod.POST)
+    @RequestMapping(value = "updateContactPassword",method = RequestMethod.POST)
     @ResponseBody
-    public ViewData updateContactPassword(@RequestParam("password")String password){
-        //TODO
-        Long id = 1L;
-        if(CommonUtil.isEmpty(password)){
-            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数为空");
+    public ViewData updateContactPassword(@RequestParam("password")String password, @RequestParam("confirmPassword") String confirmPassword,
+                                          HttpServletRequest request){
+        if(CommonUtil.isEmpty(password) || CommonUtil.isEmpty(confirmPassword)){
+            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"必填字段不能为空");
         }
-        Integer integer = companyContactService.updateCompanyContactPassword(password, id);
+        if(!password.equals(confirmPassword) ){
+            return buildFailureJson(StatusConstants.ERROR_CODE,"两次输入的密码不同，请重新输入");
+        }
+        CompanyContact companyContact = (CompanyContact)request.getSession().getAttribute("companyContact");
+        if(companyContact == null){
+            return buildFailureJson(StatusConstants.SESSION_OUT,"会话超时，请重新登录");
+        }
+        Integer integer = companyContactService.updateCompanyContactPassword(password, companyContact.getId());
         if(integer == 1){
+            request.getSession().invalidate();
             return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
         }
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
@@ -116,6 +134,13 @@ public class CompanyContactController extends BaseController{
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 公司联系人账号登录
+     * @param account
+     * @param password
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/accountLogin", method = RequestMethod.POST)
     @ResponseBody
     public ViewData accountLogin(@RequestParam("account")String account, @RequestParam("password")String password,
@@ -126,14 +151,9 @@ public class CompanyContactController extends BaseController{
         password = MD5Utils.EncoderByMd5(password);
         CompanyContact companyContact = companyContactService.selectCompanyContact(account, password);
         if(companyContact != null){
-            //TODO
+            request.getSession().setAttribute("companyContact", companyContact);
             return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
         }
         return buildFailureJson(StatusConstants.ERROR_CODE,"账号或密码错误");
-    }
-
-    @RequestMapping(value = "/adminMain.html")
-    public String adminLogin(){
-        return "/admin/adminMain";
     }
 }

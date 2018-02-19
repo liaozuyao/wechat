@@ -1,8 +1,10 @@
 package com.czyl.service.impl;
 
+import com.czyl.common.Constants;
 import com.czyl.dao.AdviserInfoMapper;
 import com.czyl.entity.AdviserInfo;
 import com.czyl.service.AdviserInfoService;
+import com.czyl.utils.MD5Utils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,6 +21,7 @@ public class AdviserInfoServiceImpl implements AdviserInfoService{
         adviserInfo.setName(name);
         adviserInfo.setPhone(phone);
         adviserInfo.setMail(mail);
+        adviserInfo.setPassword(MD5Utils.EncoderByMd5(Constants.INIT_PASSWORD));
         adviserInfo.setType(type);
         return adviserInfoMapper.insertAdviserInfo(adviserInfo);
     }
@@ -35,5 +38,13 @@ public class AdviserInfoServiceImpl implements AdviserInfoService{
         adviserInfo.setMail(mail);
         adviserInfo.setType(type);
         return adviserInfoMapper.updateAdviserInfo(adviserInfo);
+    }
+
+    public AdviserInfo adviserOrDevlpLogin(String phone, String password) {
+        return adviserInfoMapper.adviserOrDevlpLogin(phone, password);
+    }
+
+    public List<AdviserInfo> getAllByType(Integer type) {
+        return adviserInfoMapper.getAllByType(type);
     }
 }

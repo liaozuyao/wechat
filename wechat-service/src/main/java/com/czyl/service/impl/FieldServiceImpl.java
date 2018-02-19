@@ -14,15 +14,19 @@ public class FieldServiceImpl implements FieldService {
     @Resource
     private FieldMapper fieldMapper;
 
-    public Integer insertField(Field field) {
-        return fieldMapper.insertField(field);
+    public Integer insertField(String name) {
+        return fieldMapper.insertField(name);
     }
 
-    public Integer updateField(Field field) {
-        return fieldMapper.updateField(field);
+    public Integer updateField(String name) {
+        return fieldMapper.updateField(name);
     }
 
     public List<Field> selectAll() {
         return fieldMapper.selectAll();
+    }
+
+    public Integer deleteField(Long id) {
+        return fieldMapper.deleteField(id);
     }
 }

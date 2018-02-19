@@ -6,15 +6,22 @@
         <result column="ai_name" jdbcType="VARCHAR" property="name"/>
         <result column="ai_phone" jdbcType="VARCHAR" property="phone"/>
         <result column="ai_mail" jdbcType="VARCHAR" property="mail"/>
+        <result column="ai_password" jdbcType="VARCHAR" property="password"/>
         <result column="ai_type" jdbcType="INTEGER" property="type"/>
     </resultMap>
     <select id="getAllAdviser" resultMap="baseMap">
         SELECT * FROM t_adviser_info;
     </select>
     <insert id="insertAdviserInfo" parameterType="com.czyl.entity.AdviserInfo">
-        INSERT INTO t_adviser_info(ai_name, ai_phone, ai_mail,ai_type) VALUES (#{name},#{phone},#{mail},#{type});
+        INSERT INTO t_adviser_info(ai_name, ai_phone, ai_mail, ai_password, ai_type) VALUES (#{name},#{phone},#{mail},#{password},#{type});
     </insert>
     <update id="updateAdviserInfo" parameterType="com.czyl.entity.AdviserInfo">
-        UPDATE t_adviser_info SET ai_name=#{name}, ai_phone=#{phone}, ai_mail=#{mail}, ai_type=#{type} WHERE ai_id =#{id};
+        UPDATE t_adviser_info SET ai_name=#{name}, ai_phone=#{phone}, ai_mail=#{mail}, ai_password=#{password}, ai_type=#{type} WHERE ai_id =#{id};
     </update>
+    <select id="adviserOrDevlpLogin" resultMap="baseMap">
+        select * from t_adviser_info WHERE ai_phone=#{phone} AND ai_password=#{password};
+    </select>
+    <select id="getAllByType" resultMap="baseMap" parameterType="java.lang.Integer">
+        SELECT * FROM t_adviser_info WHERE ai_type=#{type};
+    </select>
 </mapper>

@@ -10,7 +10,6 @@ import java.util.UUID;
  */
 public class CommonUtil {
 
-
     public static boolean isEmpty(Object... args){
         for (Object arg : args) {
             if(null == arg){

@@ -6,7 +6,16 @@ public class AdviserInfo {
     private String name;
     private String phone;
     private String mail;
+    private String password;
     private Integer type;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Integer getType() {
         return type;
