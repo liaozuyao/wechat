@@ -27,6 +27,11 @@ public class AdviserInfoController extends BaseController{
         return "/adviserAndDevlpment/advAndDevMain";
     }
 
+    /**
+     * 查询实施或开发
+     * @param type
+     * @return
+     */
     @RequestMapping(value = "/getAllByType", method = RequestMethod.POST)
     @ResponseBody
     public ViewData getAllByType(@RequestParam("type")Integer type){
@@ -36,6 +41,12 @@ public class AdviserInfoController extends BaseController{
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",adviserInfoService.getAllByType(type));
     }
 
+    /**
+     * 实施或开发登录
+     * @param phone
+     * @param password
+     * @return
+     */
     @RequestMapping(value = "/adviserOrDevlpLogin", method = RequestMethod.POST)
     @ResponseBody
     public ViewData adviserOrDevlpLogin(@RequestParam("phone")String phone, @RequestParam("password")String password){
@@ -48,6 +59,14 @@ public class AdviserInfoController extends BaseController{
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 添加实施或开发人员账号
+     * @param name
+     * @param phone
+     * @param email
+     * @param type
+     * @return
+     */
     @RequestMapping(value = "/insertAdviser", method = RequestMethod.POST)
     @ResponseBody
     public ViewData insertAdviserInfo(@RequestParam("name") String name, @RequestParam("phone") String phone,
@@ -70,12 +89,25 @@ public class AdviserInfoController extends BaseController{
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 查询全部实施和开发
+     * @return
+     */
     @RequestMapping(value = "/getAllAdviser")
     @ResponseBody
     public ViewData getAllAdviser(){
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功", adviserInfoService.getAllAdviser());
     }
 
+    /**
+     * 更新实施或开发信息
+     * @param name
+     * @param phone
+     * @param mail
+     * @param id
+     * @param type
+     * @return
+     */
     @RequestMapping(value = "/updateAdviser", method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateAdviser(@RequestParam("name") String name, @RequestParam("phone") String phone,

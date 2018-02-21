@@ -56,26 +56,5 @@
     </div>
 </div>
 </body>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".btn").click(function () {
-            var username = $("#username").val();
-            var password = $("#password").val();
-            if(username == "" || password == ""){
-                alert("请正确填写");
-            } else {
-                $.post("<%=basePath %>superAdminLogin",{
-                    account : username,
-                    password : password
-                }, function (data) {
-                    if(data.code == 200){
-                        window.location.href ="<%=basePath%>adminMain.html";
-                    } else {
-                        alert(data.msg);
-                    }
-                })
-            }
-        })
-    })
-</script>
+<script src="<%=basePath%>static/js/superAdminLogin.js"></script>
 </html>

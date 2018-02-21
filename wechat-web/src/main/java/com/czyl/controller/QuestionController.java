@@ -30,6 +30,18 @@ public class QuestionController extends BaseController {
         return "allQuestion";
     }
 
+    /**
+     * 添加问题
+     * @param title
+     * @param fieldId
+     * @param urgent
+     * @param files
+     * @param describe
+     * @param hopeTime
+     * @param adviser
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/insertQuestion", method = RequestMethod.POST)
     @ResponseBody
     public ViewData insertQuestion(@RequestParam("title")String title, @RequestParam("fieldId")Long fieldId,
@@ -54,6 +66,14 @@ public class QuestionController extends BaseController {
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 更新问题状态
+     * @param status
+     * @param changeUser
+     * @param id
+     * @param companyId
+     * @return
+     */
     @RequestMapping(value = "/updateQuestionStatus", method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateQuestionStatus(@RequestParam("status") Integer status, @RequestParam("changeUser") Integer changeUser,
@@ -68,6 +88,11 @@ public class QuestionController extends BaseController {
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 按照公司id查询该公司提交的问题
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/getQuestionByCompanyId")
     @ResponseBody
     public ViewData getQuestionByCompanyId(HttpServletRequest request){
@@ -79,6 +104,11 @@ public class QuestionController extends BaseController {
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",questionService.getQuestionByCompanyId(companyId));
     }
 
+    /**
+     * 按照问题状态查询问题
+     * @param status
+     * @return
+     */
     @RequestMapping(value = "/getQuestionByStatus", method = RequestMethod.POST)
     @ResponseBody
     public ViewData getQuestionByStatus(@RequestParam("status") Integer status){

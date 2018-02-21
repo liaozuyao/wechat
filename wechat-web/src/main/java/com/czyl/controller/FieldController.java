@@ -32,6 +32,11 @@ public class FieldController extends BaseController {
         return "admin/allField";
     }
 
+    /**
+     * 更新领域
+     * @param name
+     * @return
+     */
     @RequestMapping(value = "/updateField", method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateField(@RequestParam("name") String name) {
@@ -44,6 +49,11 @@ public class FieldController extends BaseController {
         return buildFailureJson(StatusConstants.ERROR_CODE, "失败");
     }
 
+    /**
+     * 添加领域
+     * @param name
+     * @return
+     */
     @RequestMapping(value = "/insertField", method = RequestMethod.POST)
     @ResponseBody
     public ViewData insertField(@RequestParam("name") String name) {
@@ -56,6 +66,11 @@ public class FieldController extends BaseController {
         return buildFailureJson(StatusConstants.ERROR_CODE, "失败");
     }
 
+    /**
+     * 删除领域
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/deleteField", method = RequestMethod.POST)
     @ResponseBody
     public ViewData deleteField(@RequestParam("id") Long id) {

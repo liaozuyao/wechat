@@ -103,11 +103,16 @@ public class CompanyController extends BaseController {
         return buildSuccessJson(StatusConstants.SUCCESS_CODE, "成功", companyModelBeanService.selectAllCompany());
     }
 
+    /**
+     * 按照公司id查询公司信息
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/selectCompanyById")
     @ResponseBody
     public ViewData selectCompanyById(@RequestParam("id") Long id) {
         if (CommonUtil.isEmpty(id)) {
-            return buildFailureJson(StatusConstants.PARAMS_IS_NULL, "字段不能为空");
+            return buildFailureJson(StatusConstants.PARAMS_IS_NULL, "必填字段不能为空");
         }
         return buildSuccessJson(StatusConstants.SUCCESS_CODE, "成功", companyModelBeanService.selectByCompanyId(id));
     }

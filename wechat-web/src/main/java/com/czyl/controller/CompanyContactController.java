@@ -44,6 +44,11 @@ public class CompanyContactController extends BaseController{
     }
 
 
+    /**
+     * 添加公司联系人账号
+     * @param companyId
+     * @return
+     */
     @RequestMapping(value = "/insertAccount",method = RequestMethod.POST)
     @ResponseBody
     public ViewData insertAccount(@RequestParam("companyId")Long companyId){
@@ -58,6 +63,14 @@ public class CompanyContactController extends BaseController{
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 补充公司联系人信息
+     * @param name
+     * @param phone
+     * @param mail
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/updateCompanyContact", method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateCompanyContact(@RequestParam("name") String name, @RequestParam("phone") String phone,
@@ -82,6 +95,13 @@ public class CompanyContactController extends BaseController{
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 修改公司联系人账号密码
+     * @param password
+     * @param confirmPassword
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "updateContactPassword",method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateContactPassword(@RequestParam("password")String password, @RequestParam("confirmPassword") String confirmPassword,
@@ -104,6 +124,11 @@ public class CompanyContactController extends BaseController{
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 账号是否可用
+     * @param isActive
+     * @return
+     */
     @RequestMapping(value = "/updateAccountIsActive",method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateAccountIsActive(@RequestParam("isActive")Integer isActive){
@@ -119,6 +144,11 @@ public class CompanyContactController extends BaseController{
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
     }
 
+    /**
+     * 赋予超级管理员权限
+     * @param isSuper
+     * @return
+     */
     @RequestMapping(value = "/updateAccountIsSuper",method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateAccountIsSuper(@RequestParam("isSuper")Integer isSuper){

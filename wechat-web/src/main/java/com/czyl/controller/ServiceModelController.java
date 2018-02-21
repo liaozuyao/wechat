@@ -28,6 +28,11 @@ public class ServiceModelController extends BaseController{
         return "admin/allServiceModel";
     }
 
+    /**
+     * 添加服务模块名字
+     * @param name
+     * @return
+     */
     @RequestMapping(value = "/insertServiceName",method = RequestMethod.POST)
     @ResponseBody
     public ViewData insertServiceName(@RequestParam("name") String name){
@@ -40,12 +45,22 @@ public class ServiceModelController extends BaseController{
         return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"名字不能为空");
     }
 
+    /**
+     * 获取全部服务名字
+     * @return
+     */
     @RequestMapping(value = "/getAllServiceName")
     @ResponseBody
     public ViewData getAllServiceName(){
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",serviceModelService.selectServiceName());
     }
 
+    /**
+     * 更新服务模块名字
+     * @param name
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/updateServiceName",method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateServiceName(@RequestParam("name")String name, @RequestParam("id")Long id){
@@ -58,6 +73,12 @@ public class ServiceModelController extends BaseController{
         return buildFailureJson(StatusConstants.ERROR_CODE,"错误");
     }
 
+    /**
+     * 删除服务模块
+     * @param isDel
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/delServiceModel", method = RequestMethod.POST)
     @ResponseBody
     public ViewData deleteServiceModel(@RequestParam("isDelete")Integer isDel, @RequestParam("id")Long id){

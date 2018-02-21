@@ -15,6 +15,10 @@ public class SolveQuestionController extends BaseController{
     @Resource
     private SolveQuestionService solveQuestionService;
 
+    /**
+     * 查询顾问解决的问题
+     * @return
+     */
     @RequestMapping(value = "/getAll")
     @ResponseBody
     public ViewData getAllSolveQuestion(){

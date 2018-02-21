@@ -51,41 +51,4 @@ public class MainController extends BaseController{
         return "/admin/advDevLogin";
     }
 
-    @RequestMapping("/goSuccess")
-    public String goSuccess(){
-        return "success";
-    }
-
-    @RequestMapping("/goError")
-    public String goError(){
-        return "error";
-    }
-
-
-//    @RequestMapping("/allQuestionByAdmin")
-//    public String allQuestionByAdmin(@RequestParam(value = "pn", defaultValue = "1") Integer pn,
-//                                     Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        Admin admin = (Admin) request.getSession().getAttribute("admin");
-//        if(admin != null){
-//            PageHelper.startPage(pn, Constants.PAGESIZE);
-//            List<Question> allQuestions = questionService.getAllQuestions();
-//            PageInfo page = new PageInfo(allQuestions, Constants.PAGESIZE );
-//            model.addAttribute("questionList", allQuestions);
-//            model.addAttribute("pageInfo", page);
-//            Integer count = questionService.countQuestion();
-//            Integer pageNum = 0;
-//            if(count % Constants.PAGESIZE == 0){
-//                pageNum = count / Constants.PAGESIZE;
-//            } else {
-//                pageNum = count / Constants.PAGESIZE + 1;
-//            }
-//            model.addAttribute("pageNum", pageNum);
-//            request.setAttribute("pageNum", pageNum);
-//            return "admin/allQuestion";
-//        } else {
-////            response.sendRedirect("/WeChat/admin.html");
-//            request.getRequestDispatcher("admin.html").forward(request, response);
-//            return null;
-//        }
-//    }
 }
