@@ -2,9 +2,9 @@ package com.czyl.controller;
 
 import com.czyl.common.Constants;
 import com.czyl.common.StatusConstants;
-import com.czyl.entity.AdviserInfo;
 import com.czyl.service.AdviserInfoService;
 import com.czyl.utils.CommonUtil;
+import com.czyl.utils.MD5Utils;
 import com.czyl.utils.ViewData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +25,11 @@ public class AdviserInfoController extends BaseController{
     @RequestMapping(value = "/adviserAndDevlpMain.html")
     public String advAndDevMain(){
         return "/adviserAndDevlpment/advAndDevMain";
+    }
+
+    @RequestMapping(value = "adviserOrDevlpLogin.html")
+    public String advDevLogin(){
+        return "/adviserAndDevlpment/advDevLogin";
     }
 
     /**
@@ -53,10 +58,11 @@ public class AdviserInfoController extends BaseController{
         if(CommonUtil.isEmpty(phone) || CommonUtil.isEmpty(password)){
             return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"必填字段不能为空,请重新输入");
         }
-        if(adviserInfoService.adviserOrDevlpLogin(phone, password) != null){
+        String md5Password = MD5Utils.EncoderByMd5(password);
+        if(adviserInfoService.adviserOrDevlpLogin(phone, md5Password) != null){
             return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
         }
-        return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
+        return buildFailureJson(StatusConstants.ERROR_CODE,"账号或密码错误");
     }
 
     /**

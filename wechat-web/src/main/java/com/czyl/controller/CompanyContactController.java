@@ -11,6 +11,7 @@ import com.czyl.utils.MD5Utils;
 import com.czyl.utils.Tools;
 import com.czyl.utils.ViewData;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,11 +39,12 @@ public class CompanyContactController extends BaseController{
         return mav;
     }
 
-    @RequestMapping(value = "/updateCompany.html")
-    public String updateCompanyModel() {
-        return "updateCompany";
+    @RequestMapping(value = "updateAccInfo.html")
+    public String updateAccInfo(HttpServletRequest request, Model model){
+        CompanyContact companyContact = (CompanyContact) request.getSession().getAttribute("companyContact");
+        model.addAttribute("info",companyContact);
+        return "updateCompanyContact";
     }
-
 
     /**
      * 添加公司联系人账号
@@ -90,6 +92,9 @@ public class CompanyContactController extends BaseController{
         }
         Integer integer = companyContactService.updateCompanyContact(name, phone, mail, companyContact.getId());
         if(integer == 1){
+            companyContact.setName(name);
+            companyContact.setPhone(phone);
+            companyContact.setMail(mail);
             return buildSuccessCodeJson(StatusConstants.SUCCESS_CODE,"成功");
         }
         return buildFailureJson(StatusConstants.ERROR_CODE,"失败");

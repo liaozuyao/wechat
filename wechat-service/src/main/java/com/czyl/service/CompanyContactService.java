@@ -15,4 +15,6 @@ public interface CompanyContactService {
     Integer updateAccountIsSuper(Integer isSuper, Long id);
 
     CompanyContact selectCompanyContact(String account, String password);
+
+    CompanyContact selectCompanyContactById(Long id);
 }

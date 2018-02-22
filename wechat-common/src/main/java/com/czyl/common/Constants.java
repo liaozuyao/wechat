@@ -8,6 +8,8 @@ public class Constants {
     public static final String APPID = "wx79767de6c7a72b64";
     public static final String APPSECRET = "1f91a8d2dd517695298c824fdba7b44b";
 
+    public static final String DOWNLOAD_FILE_PATH = "192.168.0.102/czyl/file";
+
     public static final String USERINFO_FILE_PATH = "E:/Apache24/htdocs/czyl/file";
     public static final String USERINFO_DATA_PATH = "/czyl/file/";
 

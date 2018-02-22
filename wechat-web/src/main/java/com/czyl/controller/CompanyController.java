@@ -9,6 +9,7 @@ import com.czyl.service.CompanyService;
 import com.czyl.utils.CommonUtil;
 import com.czyl.utils.ViewData;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -63,6 +64,13 @@ public class CompanyController extends BaseController {
     @RequestMapping(value = "/allCompany.html")
     public String allCompany(){
         return "admin/allCompany";
+    }
+
+    @RequestMapping(value = "/updateCompany.html")
+    public String updateCompanyModel(HttpServletRequest request, Model model) {
+        Long companyId = ((CompanyContact) request.getSession().getAttribute("companyContact")).getCompanyId();
+        model.addAttribute("company", companyService.selectCompanyById(companyId));
+        return "updateCompany";
     }
 
     /**

@@ -17,4 +17,6 @@ public interface CompanyContactMapper {
     Integer updateAccountIsSuper(@Param("isSuper")Integer isSuper,@Param("id")Long id);
 
     CompanyContact selectCompanyContact(@Param("account")String account, @Param("password")String password);
+
+    CompanyContact selectCompanyContactById(Long id);
 }

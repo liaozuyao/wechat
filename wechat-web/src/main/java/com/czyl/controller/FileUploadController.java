@@ -3,6 +3,11 @@ package com.czyl.controller;
 import com.czyl.common.Constants;
 import com.czyl.common.StatusConstants;
 import com.czyl.utils.ViewData;
+import org.apache.commons.io.FileUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 /**
@@ -36,5 +42,19 @@ public class FileUploadController extends BaseController{
         } else {
             return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
         }
+    }
+
+    @RequestMapping(value = "download")
+    public ResponseEntity<byte[]> download(HttpServletRequest request, @RequestParam("fileName")String fileName)
+                        throws Exception{
+        //下载路径
+        String path = Constants.DOWNLOAD_FILE_PATH;
+        File file = new File(path + File.separator + fileName);
+        HttpHeaders headers = new HttpHeaders();
+        String downloadFileName = new String(fileName.getBytes("UTF-8"),"ISO-8859-1");
+        headers.setContentDispositionFormData("attachment", downloadFileName);
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
+                headers, HttpStatus.CREATED);
     }
 }

@@ -41,4 +41,8 @@ public class CompanyContactServiceImpl implements CompanyContactService{
     public CompanyContact selectCompanyContact(String account, String password) {
         return companyContactMapper.selectCompanyContact(account, password);
     }
+
+    public CompanyContact selectCompanyContactById(Long id) {
+        return companyContactMapper.selectCompanyContactById(id);
+    }
 }

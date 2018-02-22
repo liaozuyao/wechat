@@ -31,4 +31,7 @@
     <select id="selectCompanyContact" resultMap="baseMap">
         SELECT * FROM t_company_contact WHERE cc_account =#{account} AND cc_password=#{password};
     </select>
+    <select id="selectCompanyContactById" resultMap="baseMap" parameterType="java.lang.Long">
+        SELECT * FROM t_company_contact WHERE cc_id = #{id};
+    </select>
 </mapper>
