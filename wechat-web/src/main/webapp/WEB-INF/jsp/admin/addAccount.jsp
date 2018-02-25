@@ -38,7 +38,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">请选择公司</label>
         <div class="layui-input-block">
-            <select id="company" name="city" lay-verify="required">
+            <select id="company" name="company" lay-verify="required" onchange="reload();">
                 <option id="first" value='0'>请选择</option>
             </select>
         </div>
@@ -71,5 +71,10 @@
             })
         })
     });
+
+    function reload() {
+            alert("123123");
+    }
+
 </script>
 </html>

@@ -31,6 +31,7 @@
 <div class="layui-form-item">
     <div class="layui-input-block">
         <button id="updateAcc" class="layui-btn">修改账号基础信息</button>
+        <br>
         <button id="updatepasswd" class="layui-btn">修改账号密码</button>
     </div>
 </div>
@@ -38,6 +39,7 @@
 <div class="layui-form-item">
     <div class="layui-input-block">
         <button id="addquestion" class="layui-btn">新建问题提交</button>
+        <br>
         <button id="allquestions" class="layui-btn">提交问题查询</button>
     </div>
 </div>

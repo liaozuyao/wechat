@@ -13,4 +13,6 @@ public interface FieldMapper {
     List<Field> selectAll();
 
     Integer deleteField(Long id);
+
+    String getNameById(Long id);
 }

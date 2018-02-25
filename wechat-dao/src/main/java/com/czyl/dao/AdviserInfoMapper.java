@@ -16,4 +16,6 @@ public interface AdviserInfoMapper {
     AdviserInfo adviserOrDevlpLogin(@Param("phone")String phone, @Param("password")String password);
 
     List<AdviserInfo> getAllByType(Integer type);
+
+    String getNameById(Long id);
 }

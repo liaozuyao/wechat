@@ -8,40 +8,17 @@ import java.util.Date;
 public class QuestionDto {
 
     private Long id;
-
     private String title;
-
     private String field;
-
-    private String node;
-
-    private String phone;
-
-    private String event;
-
-    private String influence;
-
     private String urgent;
-
-    private String original;
-
-    private String originalMobile;
-
-    private String originalPhone;
-
-    private String originalMail;
-
     private String file;
-
     private String describe;
-
     private String status;
-
-    private Date createTime;
-
-    private String strTime;
-
-    private String userId;
+    private String createTime;
+    private String hopeTime;
+    private Long companyId;
+    private String adviser;
+    private String changeUser;
 
     public Long getId() {
         return id;
@@ -67,76 +44,12 @@ public class QuestionDto {
         this.field = field;
     }
 
-    public String getNode() {
-        return node;
-    }
-
-    public void setNode(String node) {
-        this.node = node;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEvent() {
-        return event;
-    }
-
-    public void setEvent(String event) {
-        this.event = event;
-    }
-
-    public String getInfluence() {
-        return influence;
-    }
-
-    public void setInfluence(String influence) {
-        this.influence = influence;
-    }
-
     public String getUrgent() {
         return urgent;
     }
 
     public void setUrgent(String urgent) {
         this.urgent = urgent;
-    }
-
-    public String getOriginal() {
-        return original;
-    }
-
-    public void setOriginal(String original) {
-        this.original = original;
-    }
-
-    public String getOriginalMobile() {
-        return originalMobile;
-    }
-
-    public void setOriginalMobile(String originalMobile) {
-        this.originalMobile = originalMobile;
-    }
-
-    public String getOriginalPhone() {
-        return originalPhone;
-    }
-
-    public void setOriginalPhone(String originalPhone) {
-        this.originalPhone = originalPhone;
-    }
-
-    public String getOriginalMail() {
-        return originalMail;
-    }
-
-    public void setOriginalMail(String originalMail) {
-        this.originalMail = originalMail;
     }
 
     public String getFile() {
@@ -155,23 +68,6 @@ public class QuestionDto {
         this.describe = describe;
     }
 
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getStrTime() {
-        return strTime;
-    }
-
-    public void setStrTime(String strTime) {
-        this.strTime = strTime;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -180,35 +76,43 @@ public class QuestionDto {
         this.status = status;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    @Override
-    public String toString() {
-        return "QuestionDto{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", field='" + field + '\'' +
-                ", node='" + node + '\'' +
-                ", phone='" + phone + '\'' +
-                ", event='" + event + '\'' +
-                ", influence='" + influence + '\'' +
-                ", urgent='" + urgent + '\'' +
-                ", original='" + original + '\'' +
-                ", originalMobile='" + originalMobile + '\'' +
-                ", originalPhone='" + originalPhone + '\'' +
-                ", originalMail='" + originalMail + '\'' +
-                ", file='" + file + '\'' +
-                ", describe='" + describe + '\'' +
-                ", status=" + status +
-                ", createTime=" + createTime +
-                ", strTime='" + strTime + '\'' +
-                ", userId=" + userId +
-                '}';
+    public String getHopeTime() {
+        return hopeTime;
+    }
+
+    public void setHopeTime(String hopeTime) {
+        this.hopeTime = hopeTime;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
+    public String getAdviser() {
+        return adviser;
+    }
+
+    public void setAdviser(String adviser) {
+        this.adviser = adviser;
+    }
+
+    public String getChangeUser() {
+        return changeUser;
+    }
+
+    public void setChangeUser(String changeUser) {
+        this.changeUser = changeUser;
     }
 }

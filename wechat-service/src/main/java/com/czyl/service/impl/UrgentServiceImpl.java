@@ -25,4 +25,8 @@ public class UrgentServiceImpl implements UrgentService{
     public Integer insertUrgent(String name) {
         return urgentMapper.insertUrgent(name);
     }
+
+    public String getNameById(Long id) {
+        return urgentMapper.getNameById(id);
+    }
 }

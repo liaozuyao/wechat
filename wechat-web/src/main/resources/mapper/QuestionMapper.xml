@@ -33,4 +33,7 @@
   <select id="getQuestionVague" resultMap="BaseResultMap">
     SELECT * FROM  t_question WHERE id LIKE '%${vague}%' AND companyid = #{companyId,jdbcType=BIGINT};
   </select>
+  <select id="getQuestionByCompanyIdDetail" resultMap="BaseResultMap">
+    SELECT * FROM t_question WHERE id=#{id} AND companyid = #{companyId};
+  </select>
 </mapper>

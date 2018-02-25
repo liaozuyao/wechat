@@ -49,5 +49,5 @@
     </div>
 </div>
 </body>
-<script src="<%=basePath%>updateAccPassword.js"></script>
+<script src="<%=basePath%>static/js/updateAccPassword.js"></script>
 </html>

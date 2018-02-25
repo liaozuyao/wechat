@@ -15,4 +15,6 @@ public interface AdviserInfoService {
     AdviserInfo adviserOrDevlpLogin(String phone, String password);
 
     List<AdviserInfo> getAllByType(Integer type);
+
+    String getNameById(Long id);
 }

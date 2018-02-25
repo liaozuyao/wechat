@@ -12,6 +12,10 @@ $("#updateInfo").click(function () {
         'phone' : phone,
         'mail' : mail
     }, function (data) {
+        if(data.code == 200){
+            alert(data.msg);
+            window.location = "customerMain.html";
+        }
         alert(data.msg);
     })
 })

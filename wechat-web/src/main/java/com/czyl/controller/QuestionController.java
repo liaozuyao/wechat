@@ -1,15 +1,19 @@
 package com.czyl.controller;
 
 import com.czyl.common.StatusConstants;
+import com.czyl.dto.QuestionDto;
 import com.czyl.entity.CompanyContact;
+import com.czyl.entity.Question;
 import com.czyl.service.QuestionService;
 import com.czyl.utils.CommonUtil;
 import com.czyl.utils.ViewData;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by liaozuyao on 2017/12/19.
@@ -30,6 +34,11 @@ public class QuestionController extends BaseController {
         return "allQuestion";
     }
 
+    @RequestMapping(value = "questionDetail.html")
+    public String questionDetail(){
+        return "questionDetail";
+    }
+
     /**
      * 添加问题
      * @param title
@@ -42,7 +51,7 @@ public class QuestionController extends BaseController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/insertQuestion", method = RequestMethod.POST)
+    @RequestMapping(value = "insertQuestion", method = RequestMethod.POST)
     @ResponseBody
     public ViewData insertQuestion(@RequestParam("title")String title, @RequestParam("fieldId")Long fieldId,
                                    @RequestParam("urgent")Long urgent, @RequestParam("files")String files,
@@ -74,7 +83,7 @@ public class QuestionController extends BaseController {
      * @param companyId
      * @return
      */
-    @RequestMapping(value = "/updateQuestionStatus", method = RequestMethod.POST)
+    @RequestMapping(value = "updateQuestionStatus", method = RequestMethod.POST)
     @ResponseBody
     public ViewData updateQuestionStatus(@RequestParam("status") Integer status, @RequestParam("changeUser") Integer changeUser,
                                          @RequestParam("id") Long id, @RequestParam("companyId") Long companyId){
@@ -93,7 +102,7 @@ public class QuestionController extends BaseController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/getQuestionByCompanyId")
+    @RequestMapping(value = "getQuestionByCompanyId")
     @ResponseBody
     public ViewData getQuestionByCompanyId(HttpServletRequest request){
         CompanyContact companyContact = (CompanyContact)request.getSession().getAttribute("companyContact");
@@ -109,12 +118,35 @@ public class QuestionController extends BaseController {
      * @param status
      * @return
      */
-    @RequestMapping(value = "/getQuestionByStatus", method = RequestMethod.POST)
+    @RequestMapping(value = "getQuestionByStatus", method = RequestMethod.POST)
     @ResponseBody
     public ViewData getQuestionByStatus(@RequestParam("status") Integer status){
         if(CommonUtil.isEmpty(status) || status == 0){
             return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数不能为空");
         }
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",questionService.getQuestionByStatus(status));
+    }
+
+    /**
+     * 问题详情
+     * @param id
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "questionDetails")
+    @ResponseBody
+    public ViewData getQuestionByCompanyIdDetail(@RequestParam("id")Long id, HttpServletRequest request,
+                                                 Model model){
+        CompanyContact companyContact = (CompanyContact)request.getSession().getAttribute("companyContact");
+        if(companyContact == null){
+            return buildFailureJson(StatusConstants.SESSION_OUT,"会话超时，请重新登录");
+        }
+        Long companyId = companyContact.getCompanyId();
+        QuestionDto questionsDetails = questionService.getQuestionByCompanyIdDetail(companyId, id);
+        if(questionsDetails == null){
+            return buildFailureJson(StatusConstants.ERROR_CODE,"错误");
+        }
+        model.addAttribute("detail", questionsDetails);
+        return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功", questionsDetails);
     }
 }

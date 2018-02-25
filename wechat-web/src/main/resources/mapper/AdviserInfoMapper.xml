@@ -24,4 +24,7 @@
     <select id="getAllByType" resultMap="baseMap" parameterType="java.lang.Integer">
         SELECT * FROM t_adviser_info WHERE ai_type=#{type};
     </select>
+    <select id="getNameById" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT ai_name FROM t_adviser_info WHERE ai_id = #{id};
+    </select>
 </mapper>

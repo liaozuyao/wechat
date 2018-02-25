@@ -11,4 +11,6 @@ public interface UrgentMapper {
     Integer deleteUrgent(Long id);
 
     Integer insertUrgent(String name);
+
+    String getNameById(Long id);
 }

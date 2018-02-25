@@ -125,10 +125,14 @@
             }, function (data) {
                 if(data.code == 200){
                     alert(data.msg);
+                    window.location = "<%=basePath%>allQuestion.html";
                 } else {
                     alert(data.msg);
                 }
             })
+        })
+        $("#back-icon").click(function () {
+            window.location = "<%=basePath%>customerMain.html"
         })
     });
 

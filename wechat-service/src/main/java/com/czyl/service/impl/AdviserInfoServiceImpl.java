@@ -47,4 +47,8 @@ public class AdviserInfoServiceImpl implements AdviserInfoService{
     public List<AdviserInfo> getAllByType(Integer type) {
         return adviserInfoMapper.getAllByType(type);
     }
+
+    public String getNameById(Long id) {
+        return adviserInfoMapper.getNameById(id);
+    }
 }

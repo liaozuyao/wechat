@@ -17,4 +17,7 @@
     <delete id="deleteField" parameterType="java.lang.Long">
         DELETE FROM t_field WHERE t_field.id = #{id};
     </delete>
+    <select id="getNameById" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT name FROM t_field WHERE id=#{id};
+    </select>
 </mapper>

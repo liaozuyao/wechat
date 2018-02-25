@@ -29,4 +29,8 @@ public class FieldServiceImpl implements FieldService {
     public Integer deleteField(Long id) {
         return fieldMapper.deleteField(id);
     }
+
+    public String getNameById(Long id) {
+        return fieldMapper.getNameById(id);
+    }
 }

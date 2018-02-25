@@ -53,5 +53,5 @@
     </div>
 </div>
 </body>
-<script src=<%=basePath%>static/js/clientLogin.js"></script>
+<script src=<%=basePath%>static/js/clientLogin.js></script>
 </html>

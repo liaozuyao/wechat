@@ -32,14 +32,31 @@
                 }
                 console.log(result.data)
                 if(result.data.length == 0){
-                    alert("无数据");
+                    alert("当前无数据");
                     window.location = "<%=basePath%>customerMain.html"
                 }
                 var dom = document.getElementById("tbody");
                 var info = "";
                 for(var i = 0; i<result.data.length; i++){
-                    info += "<tr id=" + result.data[i].id + "><td>" + result.data[i].title + "</td><td>" + result.data[i].describe + "</td>" +
-                        "<td>" + result.data[i].status + "</td>";
+                    var str = "";
+                    switch (result.data[i].status){
+                        case 0:
+                            str = "已提交";
+                            break;
+                        case 1:
+                            str = "受理";
+                            break;
+                        case 2:
+                            str = "处理中";
+                            break;
+                        case 3:
+                            str = "问题解决";
+                            break;
+                        default:
+                            break;
+                    }
+                    info += "<tr id=" + result.data[i].id + " onclick=getDetails(this.id)><td>" + result.data[i].title + "</td><td>" + result.data[i].describe + "</td>" +
+                        "<td>" + str + "</td></tr>";
                 }
                 dom.innerHTML = null;
                 dom.innerHTML = info;
@@ -63,9 +80,21 @@
     </tbody>
 </table>
 </body>
-<script>
+<script type="text/javascript">
     $("#back-icon").click(function () {
         window.location = "<%=basePath%>customerMain.html"
     })
+    function getDetails(id) {
+        $.get("<%=basePath%>questionDetails",{
+            'id' : id
+        },function (data) {
+            if(data.code == 200){
+                localStorage.setItem("temp", JSON.stringify(data.data));
+                window.location = "<%=basePath%>questionDetail.html";
+            } else {
+                alert(data.msg);
+            }
+        })
+    }
 </script>
 </html>

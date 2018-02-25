@@ -1,5 +1,6 @@
 package com.czyl.service;
 
+import com.czyl.dto.QuestionDto;
 import com.czyl.entity.Question;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface QuestionService {
     List<Question> getQuestionByCompanyId(Long companyId);
 
     List<Question> getQuestionByStatus(Integer status);
+
+    QuestionDto getQuestionByCompanyIdDetail(Long companyId, Long id);
 }
