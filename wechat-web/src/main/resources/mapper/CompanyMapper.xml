@@ -39,4 +39,7 @@
         UPDATE t_company_info SET ci_name = #{name,jdbcType=VARCHAR}, ci_code = #{code,jdbcType=VARCHAR},
         ci_contactphone = #{contactPhone,jdbcType=VARCHAR},ci_contactmail = #{contactMail,jdbcType=VARCHAR} WHERE ci_id = #{id,jdbcType=BIGINT}
     </update>
+    <delete id="deleteCompany" parameterType="java.lang.Long">
+        DELETE FROM t_company_info WHERE ci_id = #{id};
+    </delete>
 </mapper>

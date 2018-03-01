@@ -21,7 +21,7 @@
 <div class="layui-form-item">
     <label class="layui-form-label">问题领域</label>
     <div class="layui-input-block">
-        <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入问题领域" autocomplete="off"
+        <input style="margin-left: -5px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入问题领域" autocomplete="off"
                class="layui-input">
     </div>
 </div>

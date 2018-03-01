@@ -40,4 +40,8 @@ public class CompanyServiceImpl implements CompanyService {
         return companyMapper.selectCompanyById(id);
     }
 
+    public Integer deleteCompany(Long id) {
+        return companyMapper.deleteCompany(id);
+    }
+
 }

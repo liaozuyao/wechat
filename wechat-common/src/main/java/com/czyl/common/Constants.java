@@ -10,7 +10,8 @@ public class Constants {
 
     public static final String DOWNLOAD_FILE_PATH = "192.168.0.102/czyl/file";
 
-    public static final String USERINFO_FILE_PATH = "E:/Apache24/htdocs/czyl/file";
+    //public static final String USERINFO_FILE_PATH = "E:/Apache24/htdocs/czyl/file";
+    public static final String USERINFO_FILE_PATH = "C:\\soft_czyl\\weixin\\apache-tomcat-9.0.5\\webapps\\czyl\\file";
     public static final String USERINFO_DATA_PATH = "/czyl/file/";
 
     public static final String REDIRECT_URI = "http://admin.hk1.mofasuidao.cn/wechat/callBack";

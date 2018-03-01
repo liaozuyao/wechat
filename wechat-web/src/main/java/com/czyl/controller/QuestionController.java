@@ -104,13 +104,17 @@ public class QuestionController extends BaseController {
      */
     @RequestMapping(value = "getQuestionByCompanyId")
     @ResponseBody
-    public ViewData getQuestionByCompanyId(HttpServletRequest request){
-        CompanyContact companyContact = (CompanyContact)request.getSession().getAttribute("companyContact");
-        if(companyContact == null){
-            return buildFailureJson(StatusConstants.SESSION_OUT,"会话超时，请重新登录");
+    public ViewData getQuestionByCompanyId(HttpServletRequest request) {
+        CompanyContact companyContact = (CompanyContact) request.getSession().getAttribute("companyContact");
+        if (companyContact == null) {
+            return buildFailureJson(StatusConstants.SESSION_OUT, "会话超时，请重新登录");
         }
         Long companyId = companyContact.getCompanyId();
-        return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",questionService.getQuestionByCompanyId(companyId));
+        List<Question> questions = questionService.getQuestionByCompanyId(companyId);
+        if (!questions.isEmpty()) {
+            return buildSuccessJson(StatusConstants.SUCCESS_CODE, "成功", questions);
+        }
+        return buildFailureJson(StatusConstants.NO_DATA,"无数据");
     }
 
     /**
@@ -124,7 +128,11 @@ public class QuestionController extends BaseController {
         if(CommonUtil.isEmpty(status) || status == 0){
             return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数不能为空");
         }
-        return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功",questionService.getQuestionByStatus(status));
+        List<Question> questionByStatus = questionService.getQuestionByStatus(status);
+        if(!questionByStatus.isEmpty()) {
+            return buildSuccessJson(StatusConstants.SUCCESS_CODE, "成功", questionByStatus);
+        }
+        return buildFailureJson(StatusConstants.NO_DATA,"无数据");
     }
 
     /**
@@ -144,9 +152,27 @@ public class QuestionController extends BaseController {
         Long companyId = companyContact.getCompanyId();
         QuestionDto questionsDetails = questionService.getQuestionByCompanyIdDetail(companyId, id);
         if(questionsDetails == null){
-            return buildFailureJson(StatusConstants.ERROR_CODE,"错误");
+            return buildFailureJson(StatusConstants.NO_DATA,"无数据");
         }
         model.addAttribute("detail", questionsDetails);
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功", questionsDetails);
+    }
+
+    /**
+     * 按照顾问id查询问题
+     * @param adviserId
+     * @return
+     */
+    @RequestMapping(value = "getQuestionByAdviserId")
+    @ResponseBody
+    public ViewData getQuestionByAdviserId(@RequestParam("adviserId")Long adviserId){
+        if(CommonUtil.isEmpty(adviserId)){
+            return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数不能为空");
+        }
+        List<Question> questions = questionService.getQuestionByAdviser(adviserId);
+        if(!questions.isEmpty()){
+            return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功", questions);
+        }
+        return buildFailureJson(StatusConstants.NO_DATA,"无数据");
     }
 }

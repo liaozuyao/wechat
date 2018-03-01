@@ -20,4 +20,6 @@ public interface QuestionService {
     List<Question> getQuestionByStatus(Integer status);
 
     QuestionDto getQuestionByCompanyIdDetail(Long companyId, Long id);
+
+    List<Question> getQuestionByAdviser(Long adviserId);
 }

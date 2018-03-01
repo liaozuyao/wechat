@@ -27,10 +27,21 @@
             success : function (result) {
                 var dom = document.getElementById("tbody");
                 var info = "";
+                if(result.code == 205){
+                    alert(result.msg);
+                    window.location = "<%=basePath%>index.html";
+                    return;
+                }
+                if(result.code == 204){
+                    alert(result.msg);
+                    window.location = "<%=basePath%>index.html";
+                    return;
+                }
                 for(var i = 0; i<result.data.length; i++){
                     info += "<tr id=" + result.data[i].id + "><td>" + result.data[i].name + "</td><td>" +
-                        "<a class='detail' id=" + result.data[i].id + " style='margin-left:-25px; color:blue' href='#'>查看</a>&nbsp;&nbsp;" +
-                        "<a class='delete' id=" + result.data[i].id + " style='margin-left: 20px; color:red' href='#'>删除</a></td></tr>";
+                        "<a onclick='getDetails(this.id)' class='detail' id=" + result.data[i].id + " style='color:blue' href='#'>查看</a>&nbsp;&nbsp;" +
+//                        "<a onclick='getDelete(this.id)' class='delete' id=" + result.data[i].id + " style='margin-left: 20px; color:red' href='#'>删除</a>" +
+                        "</td></tr>";
                 }
                 dom.innerHTML = null;
                 dom.innerHTML = info;
@@ -53,4 +64,27 @@
     </tbody>
 </table>
 </body>
+<script>
+    function getDetails(id) {
+        $.get("<%=basePath%>selectCompanyInfoById", {
+            'id' : id
+        }, function (data) {
+            if(data.code == 200){
+                localStorage.setItem("temp", JSON.stringify(data.data));
+                window.location = "<%=basePath%>companyDetails.html";
+            } else {
+                alert(data.msg);
+            }
+
+        });
+    }
+
+    function getDelete() {
+        if(confirm("确定删除么?")){
+            console.log("yes");
+        } else {
+            console.log("no");
+        }
+    }
+</script>
 </html>

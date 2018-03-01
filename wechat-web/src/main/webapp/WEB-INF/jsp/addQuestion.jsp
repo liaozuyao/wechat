@@ -28,51 +28,51 @@
 </fieldset>
 <br>
 <div class="layui-form-item">
-    <label class="layui-form-label">标题</label>
+    <label style="margin-left: -12px" class="layui-form-label">标题</label>
     <div class="layui-input-block">
-        <input type="text" id="title" name="title" required lay-verify="required" placeholder="请输入标题(必填)" autocomplete="off"
+        <input style="margin-left: -12px" type="text" id="title" name="title" required lay-verify="required" placeholder="请输入标题(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">问题节点</label>
+    <label style="margin-left: -12px" class="layui-form-label">问题节点</label>
     <div class="layui-input-block">
-        <select id="field" name="field" lay-verify="required" class="layui-input">
+        <select style="margin-left: -12px" id="field" name="field" lay-verify="required" class="layui-input">
         </select>
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">紧急度</label>
+    <label style="margin-left: -12px" class="layui-form-label">紧急度</label>
     <div class="layui-input-block">
-        <select id="urgent" name="urgent" lay-verify="required" class="layui-input">
+        <select style="margin-left: -12px" id="urgent" name="urgent" lay-verify="required" class="layui-input">
         </select>
     </div>
 </div>
 <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">详细描述</label>
+    <label style="margin-left: -12px" class="layui-form-label">详细描述</label>
     <div class="layui-input-block">
-        <textarea id="desc" name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+        <textarea style="margin-left: -12px" id="desc" name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">解决时间</label>
+    <label style="margin-left: -12px" class="layui-form-label">解决时间</label>
     <div class="layui-input-block">
-        <input type="text" id="hopetime" name="hopetime" required lay-verify="required" placeholder="请选择(必填)" autocomplete="off"
+        <input style="margin-left: -12px" type="text" id="hopetime" name="hopetime" required lay-verify="required" placeholder="请选择(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">选择顾问</label>
+    <label style="margin-left: -12px" class="layui-form-label">选择顾问</label>
     <div class="layui-input-block">
-        <select id="adviser" name="adviser" lay-verify="required" class="layui-input">
+        <select style="margin-left: -12px" id="adviser" name="adviser" lay-verify="required" class="layui-input">
         </select>
     </div>
 </div>
 <div class="layui-form-item">
     <form id="postForm" enctype="multipart/form-data" method="post">
-        <label class="layui-form-label">选择文件</label>
+        <label style="margin-left: -12px" class="layui-form-label">选择文件</label>
             <div class="layui-input-block">
-                <input id="files" required lay-verify="required" type="file" name="file" value="选择文件"
+                <input style="margin-left: -12px" id="files" required lay-verify="required" type="file" name="file" value="选择文件"
                        autocomplete="off" onchange="fileUpload()"/>
             </div>
     </form>

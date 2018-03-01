@@ -29,16 +29,14 @@
             $("#field").text(json.field);
             $("#urgent").text(json.urgent);
             fileArr  = json.file.split(",");
-            if(fileArr.length > 1){
+            if(fileArr.length >= 1){
                 var dom = document.getElementById("files");
                 var info = "";
                 for(var i = 0; i<fileArr.length; i++) {
-                    info += "<a href='http://192.168.0.105/czyl/file/" + fileArr[i] + "'>"+fileArr[i]+"</a>,";
+                    info += "<a href='http://172.16.61.242:8080/czyl/file/" + fileArr[i] + "'>"+fileArr[i]+"</a>,";
                 }
                 info = info.substring(0, info.length-1);
                 dom.innerHTML = info;
-            } else if(fileArr == 1) {
-                $("#files").text(json.file);
             } else {
                 $("#files").text();
             }

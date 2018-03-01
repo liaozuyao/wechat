@@ -24,60 +24,60 @@
 </fieldset>
 <br>
 <div class="layui-form-item">
-    <label class="layui-form-label">公司名字</label>
+    <label style="margin-left: -12px" class="layui-form-label">公司名字</label>
     <div class="layui-input-block">
         <c:choose>
             <c:when test="${company.name.equals(null)}">
-                <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入公司名字(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入公司名字(必填)" autocomplete="off"
                        class="layui-input">
             </c:when>
             <c:otherwise>
-                <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入公司名字(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入公司名字(必填)" autocomplete="off"
                        class="layui-input" value="${company.name}">
             </c:otherwise>
         </c:choose>
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">公司税号</label>
+    <label style="margin-left: -12px" class="layui-form-label">公司税号</label>
     <div class="layui-input-block">
         <c:choose>
             <c:when test="${company.code.equals(null)}">
-                <input type="text" id="code" name="code" required lay-verify="required" placeholder="请输入公司税号(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="code" name="code" required lay-verify="required" placeholder="请输入公司税号(必填)" autocomplete="off"
                        class="layui-input">
             </c:when>
             <c:otherwise>
-                <input type="text" id="code" name="code" required lay-verify="required" placeholder="请输入公司税号(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="code" name="code" required lay-verify="required" placeholder="请输入公司税号(必填)" autocomplete="off"
                        class="layui-input" value="${company.code}">
             </c:otherwise>
         </c:choose>
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">联系电话</label>
+    <label style="margin-left: -12px" class="layui-form-label">联系电话</label>
     <div class="layui-input-block">
         <c:choose>
             <c:when test="${company.contactPhone.equals(null)}">
-                <input type="tel" id="contactphone" name="contactphone" required lay-verify="required"
+                <input style="margin-left: -12px" type="tel" id="contactphone" name="contactphone" required lay-verify="required"
                        placeholder="请输入联系电话(必填)" autocomplete="off" class="layui-input">
             </c:when>
             <c:otherwise>
-                <input type="tel" id="contactphone" name="contactphone" required lay-verify="required"
+                <input style="margin-left: -12px" type="tel" id="contactphone" name="contactphone" required lay-verify="required"
                        placeholder="请输入联系电话(必填)" autocomplete="off" class="layui-input" value="${company.contactPhone}">
             </c:otherwise>
         </c:choose>
     </div>
 </div>
 <div class="layui-form-item">
-    <label class="layui-form-label">联系邮箱</label>
+    <label style="margin-left: -12px" class="layui-form-label">联系邮箱</label>
     <div class="layui-input-block">
         <c:choose>
             <c:when test="${company.contactMail.equals(null)}">
-                <input type="email" id="contactmail" name="contactmail" required lay-verify="required" placeholder="请输入联系邮箱(必填)"
+                <input style="margin-left: -12px" type="email" id="contactmail" name="contactmail" required lay-verify="required" placeholder="请输入联系邮箱(必填)"
                        autocomplete="off" class="layui-input">
             </c:when>
             <c:otherwise>
-                <input type="email" id="contactmail" name="contactmail" required lay-verify="required" placeholder="请输入联系邮箱(必填)"
+                <input style="margin-left: -12px" type="email" id="contactmail" name="contactmail" required lay-verify="required" placeholder="请输入联系邮箱(必填)"
                        autocomplete="off" class="layui-input" value="${company.contactMail}">
             </c:otherwise>
         </c:choose>

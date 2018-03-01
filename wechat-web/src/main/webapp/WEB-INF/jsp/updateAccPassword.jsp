@@ -28,17 +28,17 @@
 </fieldset>
 <br>
 <div class="layui-form-item">
-    <label class="layui-form-label">新密码</label>
+    <label style="margin-left: -12px" class="layui-form-label">新密码</label>
     <div class="layui-input-block">
-        <input type="password" id="password" name="password" required lay-verify="required" placeholder="请输入新密码(必填)" autocomplete="off"
+        <input style="margin-left: -12px" type="password" id="password" name="password" required lay-verify="required" placeholder="请输入新密码(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>
 <br>
 <div class="layui-form-item">
-    <label class="layui-form-label">再次输入</label>
+    <label style="margin-left: -12px" class="layui-form-label">再次输入</label>
     <div class="layui-input-block">
-        <input type="password" id="confirmpassword" name="curfirmpassword" required lay-verify="required" placeholder="请再次输入密码(必填)" autocomplete="off"
+        <input style="margin-left: -12px" type="password" id="confirmpassword" name="curfirmpassword" required lay-verify="required" placeholder="请再次输入密码(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>

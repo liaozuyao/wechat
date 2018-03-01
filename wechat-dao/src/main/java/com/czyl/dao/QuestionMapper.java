@@ -16,4 +16,6 @@ public interface QuestionMapper {
     List<Question> getQuestionByStatus(Integer status);
 
     Question getQuestionByCompanyIdDetail(@Param("companyId") Long companyId, @Param("id")Long id);
+
+    List<Question> getQuestionByAdviser(Long adviserId);
 }

@@ -1,6 +1,7 @@
 package com.czyl.common;
 
 public class StatusConstants {
+
     /** 获取成功 */
     public static final Integer SUCCESS_CODE = 200;
     /** 必填字段为空 */
@@ -13,4 +14,6 @@ public class StatusConstants {
     public static final Integer NOT_JURISDICTION = 204;
     /** 会话超时，请重新登录 */
     public static final Integer SESSION_OUT = 205;
+    /** 无数据 */
+    public static final Integer NO_DATA = 206;
 }

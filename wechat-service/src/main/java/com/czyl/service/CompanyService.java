@@ -16,4 +16,6 @@ public interface CompanyService {
     List<Company> selectCompany();
 
     Company selectCompanyById(Long id);
+
+    Integer deleteCompany(Long id);
 }

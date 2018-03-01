@@ -97,4 +97,8 @@ public class QuestionServiceImpl implements QuestionService{
         questionDto.setChangeUser(null);
         return questionDto;
     }
+
+    public List<Question> getQuestionByAdviser(Long adviserId) {
+        return questionMapper.getQuestionByAdviser(adviserId);
+    }
 }

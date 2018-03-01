@@ -36,4 +36,7 @@
   <select id="getQuestionByCompanyIdDetail" resultMap="BaseResultMap">
     SELECT * FROM t_question WHERE id=#{id} AND companyid = #{companyId};
   </select>
+  <select id="getQuestionByAdviser" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    SELECT * FROM t_question WHERE adviser = #{adviserId};
+  </select>
 </mapper>

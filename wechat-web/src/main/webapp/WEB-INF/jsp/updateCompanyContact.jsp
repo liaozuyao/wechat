@@ -30,15 +30,15 @@
 </fieldset>
 <br>
 <div class="layui-form-item">
-    <label class="layui-form-label">名字</label>
+    <label style="margin-left: -12px" class="layui-form-label">名字</label>
     <div class="layui-input-block">
         <c:choose>
             <c:when test="${info.name.equals(null)}">
-                <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入名字(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入名字(必填)" autocomplete="off"
                        class="layui-input" >
             </c:when>
             <c:otherwise>
-                <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入名字(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入名字(必填)" autocomplete="off"
                        class="layui-input" value="${info.name}">
             </c:otherwise>
         </c:choose>
@@ -46,15 +46,15 @@
 </div>
 <br>
 <div class="layui-form-item">
-    <label class="layui-form-label">电话</label>
+    <label style="margin-left: -12px" class="layui-form-label">电话</label>
     <div class="layui-input-block">
         <c:choose>
             <c:when test="${info.phone.equals(null)}">
-                <input type="text" id="phone" name="phone" maxlength="11" required lay-verify="required" placeholder="请输入电话(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="phone" name="phone" maxlength="11" required lay-verify="required" placeholder="请输入电话(必填)" autocomplete="off"
                        class="layui-input">
             </c:when>
             <c:otherwise>
-                <input type="text" id="phone" name="phone" maxlength="11" required lay-verify="required" placeholder="请输入电话(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="phone" name="phone" maxlength="11" required lay-verify="required" placeholder="请输入电话(必填)" autocomplete="off"
                        class="layui-input" value="${info.phone}">
             </c:otherwise>
         </c:choose>
@@ -62,15 +62,15 @@
 </div>
 <br>
 <div class="layui-form-item">
-    <label class="layui-form-label">邮箱</label>
+    <label style="margin-left: -12px" class="layui-form-label">邮箱</label>
     <div class="layui-input-block">
         <c:choose>
             <c:when test="${info.mail.equals(null)}">
-                <input type="text" id="mail" name="mail" required lay-verify="required" placeholder="请输入邮箱(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="mail" name="mail" required lay-verify="required" placeholder="请输入邮箱(必填)" autocomplete="off"
                        class="layui-input">
             </c:when>
             <c:otherwise>
-                <input type="text" id="mail" name="mail" required lay-verify="required" placeholder="请输入邮箱(必填)" autocomplete="off"
+                <input style="margin-left: -12px" type="text" id="mail" name="mail" required lay-verify="required" placeholder="请输入邮箱(必填)" autocomplete="off"
                        class="layui-input" value="${info.mail}">
             </c:otherwise>
         </c:choose>

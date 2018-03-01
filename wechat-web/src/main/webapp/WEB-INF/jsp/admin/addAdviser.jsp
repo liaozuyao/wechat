@@ -28,28 +28,28 @@
 <div class="layui-form-item">
     <label class="layui-form-label">名字</label>
     <div class="layui-input-block">
-        <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入名字(必填)" autocomplete="off"
+        <input style="margin-left: -5px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入名字(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">联系电话</label>
     <div class="layui-input-block">
-        <input type="text" id="phone" maxlength="11" name="phone" required lay-verify="required" placeholder="请输入联系电话(必填)" autocomplete="off"
+        <input style="margin-left: -5px" type="text" id="phone" maxlength="11" name="phone" required lay-verify="required" placeholder="请输入联系电话(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">邮箱</label>
     <div class="layui-input-block">
-        <input type="email" id="email" name="email" required lay-verify="required" placeholder="请输入邮箱(必填)" autocomplete="off"
+        <input style="margin-left: -5px" type="email" id="email" name="email" required lay-verify="required" placeholder="请输入邮箱(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">实施/开发</label>
     <div class="layui-input-block">
-        <select id="type" name="type" lay-verify="required" class="layui-input">
+        <select style="margin-left: -5px" id="type" name="type" lay-verify="required" class="layui-input">
             <option lay-verify="required" value="9">请选择(必填)</option>
             <option lay-verify="required" value="7">实施</option>
             <option lay-verify="required" value="8">开发</option>

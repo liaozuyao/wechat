@@ -28,7 +28,7 @@
 <div class="layui-form-item">
     <label class="layui-form-label">模块名字</label>
     <div class="layui-input-block">
-        <input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入模块名字" autocomplete="off"
+        <input style="margin-left: -5px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入模块名字" autocomplete="off"
                class="layui-input">
     </div>
 </div>
