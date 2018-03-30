@@ -28,10 +28,16 @@
 <div class="layui-form-item">
     <div class="layui-input-block">
         <button id="commitCompany" class="layui-btn">立即提交</button>
-        <button id="back" class="layui-btn layui-btn-primary">返回</button>
+        <button id="reset" class="layui-btn layui-btn-primary">清空</button>
     </div>
 </div>
 <script type="text/javascript">
+    $("#back-icon").click(function () {
+        window.history.go(-1);
+    })
+    $("#reset").click(function(){
+        $("#name").val("");
+    })
     $("#commitCompany").click(function () {
         var name = $("#name").val();
         $.post("<%=basePath%>insertCompany", {

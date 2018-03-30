@@ -13,7 +13,7 @@ $("#updatepasswd").click(function () {
     })
 })
 $("#back-icon").click(function () {
-    window.location = "customerMain.html";
+    window.history.go(-1);
 })
 $("#reset").click(function () {
     $("#password").val("");

@@ -50,6 +50,9 @@
 </div>
 </body>
 <script>
+    $("#back-icon").click(function () {
+        window.history.go(-1);
+    })
     $("#commit").click(function () {
         var id = $("#company").val();
         $.post("<%=basePath%>insertAccount", {

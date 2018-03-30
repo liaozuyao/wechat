@@ -36,6 +36,9 @@ $(".update").click(function () {
     console.log("asdasdsad");
     console.log($("#update").attr());
 })
+$("#back-icon").click(function () {
+    window.history.go(-1);
+})
 </script>
 </body>
 </html>

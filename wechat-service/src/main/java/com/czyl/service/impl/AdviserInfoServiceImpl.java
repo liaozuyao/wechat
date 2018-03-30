@@ -51,4 +51,16 @@ public class AdviserInfoServiceImpl implements AdviserInfoService{
     public String getNameById(Long id) {
         return adviserInfoMapper.getNameById(id);
     }
+
+    public Integer updateEmail(String mail, Long id) {
+        return adviserInfoMapper.updateEmail(mail, id);
+    }
+
+    public AdviserInfo selectAdviserById(Long id) {
+        return adviserInfoMapper.selectAdviserById(id);
+    }
+
+    public Integer updatePassword(String password, Long id) {
+        return adviserInfoMapper.updatePassword(password, id);
+    }
 }

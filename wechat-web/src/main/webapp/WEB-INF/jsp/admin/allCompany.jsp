@@ -78,7 +78,9 @@
 
         });
     }
-
+    $("#back-icon").click(function () {
+        window.history.go(-1);
+    })
     function getDelete() {
         if(confirm("确定删除么?")){
             console.log("yes");

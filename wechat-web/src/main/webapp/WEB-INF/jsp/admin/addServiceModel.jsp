@@ -35,9 +35,16 @@
 <div class="layui-form-item">
     <div class="layui-input-block">
         <button id="commitCompany" class="layui-btn">立即提交</button>
-        <button id="back" class="layui-btn layui-btn-primary">返回</button>
+        <button id="reset" class="layui-btn layui-btn-primary">清空</button>
     </div>
 </div>
-
+<script>
+    $("#reset").click(function(){
+        $("#name").val("");
+    })
+    $("#back-icon").click(function () {
+        window.history.go(-1);
+    })
+</script>
 </body>
 </html>

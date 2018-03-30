@@ -22,3 +22,6 @@ $("#addfield").click(function () {
 $("#allfield").click(function () {
     window.location="allField.html";
 })
+$("#alladviser").click(function(){
+    window.location="allAdviser.html";
+})

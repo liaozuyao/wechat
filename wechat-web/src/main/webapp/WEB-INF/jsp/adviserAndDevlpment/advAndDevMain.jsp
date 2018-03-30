@@ -35,7 +35,7 @@
         <div id="updateAcc" class="grids-grid3">
             <div class="grids-grid3-cont">
                 <div class="grids-grid-icon"><img src="<%=basePath%>static/img/icon-ax-3.png" alt=""></div>
-                <p class="grids-grid-label">修改账号基础信息</p>
+                <p class="grids-grid-label">修改联系邮箱</p>
             </div>
         </div>
         <div id="updatepasswd" class="grids-grid3">
@@ -44,22 +44,10 @@
                 <p class="grids-grid-label">修改账号密码</p>
             </div>
         </div>
-        <div id="addquestion" class="grids-grid3">
+        <div id="checkquestion" class="grids-grid3">
             <div class="grids-grid3-cont">
                 <div class="grids-grid-icon"><img src="<%=basePath%>static/img/icon-ax-3.png" alt=""></div>
-                <p class="grids-grid-label">新建问题提交</p>
-            </div>
-        </div>
-        <div id="allquestions" class="grids-grid3">
-            <div class="grids-grid3-cont">
-                <div class="grids-grid-icon"><img src="<%=basePath%>static/img/icon-ax-3.png" alt=""></div>
-                <p class="grids-grid-label">提交问题查询</p>
-            </div>
-        </div>
-        <div id="updateCompanyInfo" class="grids-grid3">
-            <div class="grids-grid3-cont">
-                <div class="grids-grid-icon"><img src="<%=basePath%>static/img/icon-ax-3.png" alt=""></div>
-                <p class="grids-grid-label">完善公司信息资料</p>
+                <p class="grids-grid-label">查看问题</p>
             </div>
         </div>
     </div>
@@ -71,5 +59,6 @@
         </a>
     </div>
 </div>
+<script type="text/javascript" src="<%=basePath%>static/js/advAndDevMain.js"></script>
 </body>
 </html>

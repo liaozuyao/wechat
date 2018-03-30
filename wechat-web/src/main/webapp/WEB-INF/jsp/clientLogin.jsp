@@ -33,16 +33,16 @@
 </br>
 </br>
 <div class="layui-form-item">
-    <label style="margin-left: -12px" class="layui-form-label">账号</label>
+    <label style="margin-left: -20px" class="layui-form-label">账号</label>
     <div class="layui-input-block">
-        <input style="margin-left: -12px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入账号(必填)" autocomplete="off"
+        <input style="margin-left: -20px" type="text" id="name" name="name" required lay-verify="required" placeholder="请输入账号(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>
 <div class="layui-form-item">
-    <label style="margin-left: -12px" class="layui-form-label">密码</label>
+    <label style="margin-left: -20px" class="layui-form-label">密码</label>
     <div class="layui-input-block">
-        <input style="margin-left: -12px" type="password" id="password" name="password" required lay-verify="required" placeholder="请输入密码(必填)" autocomplete="off"
+        <input style="margin-left: -20px" type="password" id="password" name="password" required lay-verify="required" placeholder="请输入密码(必填)" autocomplete="off"
                class="layui-input">
     </div>
 </div>

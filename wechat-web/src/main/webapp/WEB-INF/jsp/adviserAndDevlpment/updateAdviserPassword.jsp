@@ -6,12 +6,13 @@
 %>
 <html>
 <head>
-    <title>修改密码</title>
+    <title></title>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="<%=basePath%>static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="<%=basePath%>static/css/ui.css">
     <script src="<%=basePath%>static/jquery/jQuery.js"></script>
     <script src="<%=basePath%>static/layui/layui.js"></script>
 </head>
@@ -21,7 +22,7 @@
 </fieldset>
 <br>
 <div class="layui-form-item">
-    <label style="margin-left: -12px" class="layui-form-label">新密码</label>
+    <label style="margin-left: 10px" class="layui-form-label">新密码</label>
     <div class="layui-input-block">
         <input style="margin-left: -12px" type="password" id="password" name="password" required lay-verify="required" placeholder="请输入新密码(必填)" autocomplete="off"
                class="layui-input">
@@ -29,7 +30,7 @@
 </div>
 <br>
 <div class="layui-form-item">
-    <label style="margin-left: -12px" class="layui-form-label">再次输入</label>
+    <label style="margin-left: 10px; padding: 9px 2px" class="layui-form-label">再次输入</label>
     <div class="layui-input-block">
         <input style="margin-left: -12px" type="password" id="confirmpassword" name="curfirmpassword" required lay-verify="required" placeholder="请再次输入密码(必填)" autocomplete="off"
                class="layui-input">
@@ -41,6 +42,6 @@
         <button id="reset" class="layui-btn layui-btn-primary">清空</button>
     </div>
 </div>
+<script src="<%=basePath%>static/js/updateAdviserPassword.js"></script>
 </body>
-<script src="<%=basePath%>static/js/updateAccPassword.js"></script>
 </html>

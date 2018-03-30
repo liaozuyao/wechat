@@ -74,5 +74,10 @@
         <%--<button id="allserviceModel" class="layui-btn">所有服务模块</button>--%>
     <%--</div>--%>
 <%--</div>--%>
+<script>
+    $("#back-icon").click(function () {
+        window.history.go(-1);
+    })
+</script>
 </body>
 </html>

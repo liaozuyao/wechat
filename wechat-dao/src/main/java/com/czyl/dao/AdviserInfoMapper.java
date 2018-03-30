@@ -18,4 +18,10 @@ public interface AdviserInfoMapper {
     List<AdviserInfo> getAllByType(Integer type);
 
     String getNameById(Long id);
+
+    Integer updateEmail(@Param("mail")String mail, @Param("id")Long id);
+
+    AdviserInfo selectAdviserById(Long id);
+
+    Integer updatePassword(@Param("password")String password, @Param("id")Long id);
 }

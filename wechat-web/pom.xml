@@ -141,6 +141,16 @@
             <artifactId>pagehelper</artifactId>
             <version>5.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.thetransactioncompany</groupId>
+            <artifactId>cors-filter</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thetransactioncompany</groupId>
+            <artifactId>java-property-utils</artifactId>
+            <version>1.9</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>wechat</finalName>

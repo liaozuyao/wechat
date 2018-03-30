@@ -46,4 +46,13 @@ public class SuperAdminController extends BaseController{
         }
         return buildFailureJson(StatusConstants.ERROR_CODE,"账号或密码错误");
     }
+
+    @RequestMapping(value = "test", method = RequestMethod.POST)
+    public String testController(@RequestParam("name")String name,@RequestParam("department")String department,
+                                 @RequestParam("rzgw")String rzgw,@RequestParam("jb")String jb,
+                                 @RequestParam("starttime")String starttime,@RequestParam("endtime")String endtime,
+                                 @RequestParam("count")String count){
+        return "login";
+
+    }
 }
