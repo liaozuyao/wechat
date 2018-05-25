@@ -7,6 +7,8 @@ import com.czyl.entity.Question;
 import com.czyl.service.QuestionService;
 import com.czyl.utils.CommonUtil;
 import com.czyl.utils.ViewData;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,7 @@ import java.util.List;
  * Created by liaozuyao on 2017/12/19.
  */
 @Controller
+@Api(description = "问题相关接口")
 public class QuestionController extends BaseController {
 
     @Resource
@@ -53,6 +56,7 @@ public class QuestionController extends BaseController {
      */
     @RequestMapping(value = "insertQuestion", method = RequestMethod.POST)
     @ResponseBody
+    @ApiOperation(value = "添加问题")
     public ViewData insertQuestion(@RequestParam("title")String title, @RequestParam("fieldId")Long fieldId,
                                    @RequestParam("urgent")Long urgent, @RequestParam("files")String files,
                                    @RequestParam("describe")String describe, @RequestParam("hopeTime") String hopeTime,
@@ -85,6 +89,7 @@ public class QuestionController extends BaseController {
      */
     @RequestMapping(value = "updateQuestionStatus", method = RequestMethod.POST)
     @ResponseBody
+    @ApiOperation(value = "更新问题状态")
     public ViewData updateQuestionStatus(@RequestParam("status") Integer status, @RequestParam("changeUser") Integer changeUser,
                                          @RequestParam("id") Long id, @RequestParam("companyId") Long companyId){
         if(CommonUtil.isEmpty(status)||CommonUtil.isEmpty(changeUser)||CommonUtil.isEmpty(id)||CommonUtil.isEmpty(companyId)){
@@ -104,6 +109,7 @@ public class QuestionController extends BaseController {
      */
     @RequestMapping(value = "getQuestionByCompanyId")
     @ResponseBody
+    @ApiOperation(value = "按照公司获取问题")
     public ViewData getQuestionByCompanyId(HttpServletRequest request) {
         CompanyContact companyContact = (CompanyContact) request.getSession().getAttribute("companyContact");
         if (companyContact == null) {
@@ -124,6 +130,7 @@ public class QuestionController extends BaseController {
      */
     @RequestMapping(value = "getQuestionByStatus", method = RequestMethod.POST)
     @ResponseBody
+    @ApiOperation(value = "按照问题状态查询问题")
     public ViewData getQuestionByStatus(@RequestParam("status") Integer status){
         if(CommonUtil.isEmpty(status) || status == 0){
             return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数不能为空");
@@ -143,6 +150,7 @@ public class QuestionController extends BaseController {
      */
     @RequestMapping(value = "questionDetails")
     @ResponseBody
+    @ApiOperation(value = "查看问题详情")
     public ViewData getQuestionByCompanyIdDetail(@RequestParam("id")Long id, HttpServletRequest request,
                                                  Model model){
         CompanyContact companyContact = (CompanyContact)request.getSession().getAttribute("companyContact");
@@ -165,6 +173,7 @@ public class QuestionController extends BaseController {
      */
     @RequestMapping(value = "getQuestionByAdviserId")
     @ResponseBody
+    @ApiOperation(value = "按照顾问id查询问题")
     public ViewData getQuestionByAdviserId(@RequestParam("adviserId")Long adviserId){
         if(CommonUtil.isEmpty(adviserId)){
             return buildFailureJson(StatusConstants.PARAMS_IS_NULL,"参数不能为空");

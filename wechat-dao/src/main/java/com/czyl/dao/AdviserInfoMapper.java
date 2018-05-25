@@ -24,4 +24,6 @@ public interface AdviserInfoMapper {
     AdviserInfo selectAdviserById(Long id);
 
     Integer updatePassword(@Param("password")String password, @Param("id")Long id);
+
+    Integer deleteById(Long id);
 }

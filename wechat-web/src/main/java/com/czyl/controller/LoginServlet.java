@@ -14,7 +14,6 @@ import java.net.URLEncoder;
  * Created by liaozuyao on 2018/1/2.
  */
 
-@Deprecated
 @WebServlet("/wxLogin")
 public class LoginServlet extends HttpServlet{
 

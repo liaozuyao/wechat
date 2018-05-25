@@ -23,4 +23,6 @@ public interface AdviserInfoService {
     AdviserInfo selectAdviserById(Long id);
 
     Integer updatePassword(String password, Long id);
+
+    Integer deleteById(Long id);
 }

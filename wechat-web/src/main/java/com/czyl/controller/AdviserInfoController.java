@@ -20,34 +20,49 @@ public class AdviserInfoController extends BaseController{
     @Resource
     private AdviserInfoService adviserInfoService;
 
-    @RequestMapping(value = "/insertAdviserOrDev.html")
+    @GetMapping(value = "/insertAdviserOrDev.html")
     public String insertAdviser(){
         return "/admin/addAdviser";
     }
 
-    @RequestMapping(value = "/adviserAndDevlpMain.html")
+    @GetMapping(value = "/adviserAndDevlpMain.html")
     public String advAndDevMain(){
         return "/adviserAndDevlpment/advAndDevMain";
     }
 
-    @RequestMapping(value = "adviserOrDevlpLogin.html")
+    @GetMapping(value = "adviserOrDevlpLogin.html")
     public String advDevLogin(){
         return "/adviserAndDevlpment/advDevLogin";
     }
 
-    @RequestMapping(value = "updateAdvOrDevEmail.html")
+    @GetMapping(value = "updateAdvOrDevEmail.html")
     public String updateEmail(){
         return "/adviserAndDevlpment/updateEmail";
     }
 
-    @RequestMapping(value = "updateAdviserPassword.html")
+    @GetMapping(value = "updateAdviserPassword.html")
     public String updatePassword(){
         return "/adviserAndDevlpment/updateAdviserPassword";
     }
 
-    @RequestMapping(value = "allAdviser.html")
+    @GetMapping(value = "allAdviser.html")
     public String allAdviser(){
         return "/admin/allAdviser";
+    }
+
+    @GetMapping(value = "adviserInfo.html")
+    public String getInfo(){
+        return "/admin/adviserInfo";
+    }
+
+    @GetMapping(value = "deleteById")
+    @ResponseBody
+    public ViewData deleteById(@RequestParam("id")Long id) {
+        if (adviserInfoService.deleteById(id) == 1) {
+            return buildFailureJson(StatusConstants.SUCCESS_CODE, "成功");
+        } else {
+            return buildFailureJson(StatusConstants.ERROR_CODE,"失败");
+        }
     }
     /**
      * 修改顾问账号密码
@@ -147,6 +162,11 @@ public class AdviserInfoController extends BaseController{
         return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功", adviserInfo);
     }
 
+    @RequestMapping(value = "getInfoById")
+    @ResponseBody
+    public ViewData getInfoById(@RequestParam("id")Long id){
+        return buildSuccessJson(StatusConstants.SUCCESS_CODE,"成功", adviserInfoService.selectAdviserById(id));
+    }
     /**
      * 添加实施或开发人员账号
      * @param name

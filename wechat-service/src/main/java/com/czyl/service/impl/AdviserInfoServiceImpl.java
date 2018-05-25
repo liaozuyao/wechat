@@ -8,6 +8,7 @@ import com.czyl.utils.MD5Utils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -62,5 +63,9 @@ public class AdviserInfoServiceImpl implements AdviserInfoService{
 
     public Integer updatePassword(String password, Long id) {
         return adviserInfoMapper.updatePassword(password, id);
+    }
+
+    public Integer deleteById(Long id) {
+        return adviserInfoMapper.deleteById(id);
     }
 }

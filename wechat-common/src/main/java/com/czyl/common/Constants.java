@@ -8,13 +8,13 @@ public class Constants {
     public static final String APPID = "wx79767de6c7a72b64";
     public static final String APPSECRET = "1f91a8d2dd517695298c824fdba7b44b";
 
-    public static final String DOWNLOAD_FILE_PATH = "192.168.0.102/czyl/file";
+    public static final String DOWNLOAD_FILE_PATH = "www.in-dominator.cn/czyl/file";
 
     //public static final String USERINFO_FILE_PATH = "E:/Apache24/htdocs/czyl/file";
     public static final String USERINFO_FILE_PATH = "C:\\soft_czyl\\weixin\\apache-tomcat-9.0.5\\webapps\\czyl\\file";
     public static final String USERINFO_DATA_PATH = "/czyl/file/";
 
-    public static final String REDIRECT_URI = "http://admin.hk1.mofasuidao.cn/wechat/callBack";
+    public static final String REDIRECT_URI = "http://www.in-dominator.cn/wechat/callBack";
 
     public static final String REGEX_MOBILE = "1(3|5|7|8)[0-9]{9}";
 

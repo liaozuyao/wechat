@@ -25,7 +25,7 @@ public class CallBackController extends BaseController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "/wxLogin", method = RequestMethod.GET)
+    @RequestMapping(value = "/wxLogins", method = RequestMethod.GET)
     public void wxLogin(HttpServletResponse response) throws IOException{
         String backUrl = Constants.REDIRECT_URI;
         String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" +Constants.APPID +

@@ -16,6 +16,9 @@
         <result column="ai_mail" jdbcType="VARCHAR" property="mail"/>
         <result column="ai_type" jdbcType="INTEGER" property="type"/>
     </resultMap>
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM t_adviser_info WHERE ai_id=#{id};
+    </delete>
     <select id="getAllAdviser" resultMap="nopswdMap">
         SELECT ai_id,ai_name,ai_mail,ai_phone,ai_type FROM t_adviser_info;
     </select>

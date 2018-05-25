@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czyl.dao.IWechatUserMapper">
+    <resultMap id="baseMap" type="com.czyl.bean.WechatUser">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="openid" property="openId" jdbcType="VARCHAR"/>
+        <result column="username" property="userName" jdbcType="VARCHAR"/>
+        <result column="imgstr" property="imgStr" jdbcType="VARCHAR"/>
+        <result column="companyid" property="companyId" jdbcType="BIGINT"/>
+        <result column="iseffective" property="isEffective" jdbcType="INTEGER"/>
+        <result column="isdelete" property="isDelete" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="addWechatUser">
+        INSERT INTO wechat_user(openid, username, imgstr) VALUES
+        (#{openId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{imgStr,jdbcType=VARCHAR});
+    </insert>
+
+    <update id="relationUserCompnay">
+        UPDATE wechat_user SET iseffective = 1, companyid = #{companyId,jdbcType=BIGINT}
+         WHERE id = #{id,jdbcType=BIGINT};
+    </update>
+
+    <select id="getAllUser" resultMap="baseMap">
+      SELECT * FROM wechat_user;
+    </select>
+
+    <update id="updateUserInfo">
+        UPDATE wechat_user SET username = #{userName,jdbcType=VARCHAR}, imgstr = #{imgStr,jdbcType=VARCHAR}
+        WHERE openid=#{openId,jdbcType=VARCHAR};
+    </update>
+
+    <update id="cancelRelation">
+        UPDATE wechat_user SET iseffective = 0 WHERE id=#{id,jdbcType=BIGINT};
+    </update>
+
+    <update id="updateDelete">
+        UPDATE wechat_user SET isdelete = #{isdelete,jdbcType=INTEGER} WHERE id=#{id,jdbcType=BIGINT};
+    </update>
+</mapper>
